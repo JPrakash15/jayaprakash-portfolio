@@ -1,0 +1,2428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HelpFlow AI - Design Case Study by Jayaprakash J</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      :root {
+        --blue: #2563eb;
+        --blue-light: #cbe0ff;
+        --blue-dark: #152e63;
+        --purple: #8e2de2;
+        --dark: #0f172a;
+        --mid: #334155;
+        --soft: #64748b;
+        --muted: #94a3b8;
+        --bg: #f8faff;
+        --white: #ffffff;
+        --border: #e2e8f0;
+        --accent: #f6f9ff;
+        --nav-width: 220px;
+        --content-max: 1260px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--dark);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* ── LAYOUT ─────────────────────────────── */
+      .layout {
+        display: flex;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      .main-content {
+        flex: 1;
+        max-width: calc(100% - var(--nav-width));
+        padding: 0 0 120px 0;
+      }
+
+      /* ── RIGHT NAV ───────────────────────────── */
+      .side-nav {
+        width: var(--nav-width);
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        padding: 48px 24px;
+        border-left: 1px solid var(--border);
+        background: var(--white);
+        overflow-y: auto;
+        z-index: 100;
+      }
+
+      .side-nav .nav-label {
+        font-family: "DM Mono", monospace;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .side-nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .side-nav ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--soft);
+        transition: all 0.2s ease;
+        line-height: 1.3;
+      }
+
+      .side-nav ul li a .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border);
+        flex-shrink: 0;
+        transition: all 0.2s ease;
+      }
+
+      .side-nav ul li a:hover {
+        background: var(--accent);
+        color: var(--blue);
+      }
+
+      .side-nav ul li a:hover .dot,
+      .side-nav ul li a.active .dot {
+        background: var(--blue);
+      }
+
+      .side-nav ul li a.active {
+        background: var(--accent);
+        color: var(--blue);
+        font-weight: 600;
+      }
+
+      .nav-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 16px 0;
+      }
+
+      .nav-author {
+        margin-top: auto;
+        padding-top: 20px;
+      }
+
+      .nav-author .author-name {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .nav-author .author-role {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      .nav-author .author-links {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .nav-author .author-links a {
+        font-size: 11px;
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      /* ── HERO ────────────────────────────────── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 80px 80px 80px;
+        position: relative;
+        overflow: hidden;
+        background: var(--dark);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        left: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        right: 200px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(142, 45, 226, 0.2) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(37, 99, 235, 0.15);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        border-radius: 100px;
+        padding: 6px 14px;
+        margin-bottom: 40px;
+        width: fit-content;
+        animation: fadeUp 0.6s ease both;
+      }
+
+      .hero-tag .tag-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #60a5fa;
+        animation: pulse 2s infinite;
+      }
+
+      .hero-tag span {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 1px;
+        color: #93c5fd;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(48px, 6vw, 88px);
+        font-weight: 300;
+        line-height: 1.05;
+        color: var(--white);
+        max-width: 700px;
+        animation: fadeUp 0.6s 0.1s ease both;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-sub {
+        margin-top: 32px;
+        font-size: 18px;
+        color: #94a3b8;
+        max-width: 520px;
+        line-height: 1.7;
+        animation: fadeUp 0.6s 0.2s ease both;
+      }
+
+      .hero-meta {
+        display: flex;
+        gap: 48px;
+        margin-top: 64px;
+        animation: fadeUp 0.6s 0.3s ease both;
+      }
+
+      .hero-meta-item .label {
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #475569;
+        margin-bottom: 6px;
+      }
+
+      .hero-meta-item .value {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--white);
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 40px;
+        left: 80px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #475569;
+        font-size: 12px;
+        font-family: "DM Mono", monospace;
+        letter-spacing: 1px;
+        animation: fadeUp 0.6s 0.5s ease both;
+      }
+
+      .scroll-line {
+        width: 40px;
+        height: 1px;
+        background: #475569;
+      }
+
+      /* ── SECTIONS ────────────────────────────── */
+      section {
+        padding: 100px 80px;
+        border-bottom: 1px solid var(--border);
+        max-width: var(--content-max);
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .section-tag {
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--blue);
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      h2 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--dark);
+        margin-bottom: 32px;
+      }
+
+      h2 em {
+        font-style: italic;
+        color: var(--blue);
+      }
+
+      h3 {
+        font-family: "Fraunces", serif;
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--dark);
+        margin-bottom: 16px;
+        margin-top: 48px;
+      }
+
+      p {
+        font-size: 16px;
+        color: var(--mid);
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      p strong {
+        color: var(--dark);
+        font-weight: 600;
+      }
+
+      /* ── CALLOUT BOX ─────────────────────────── */
+      .callout {
+        background: var(--accent);
+        border-left: 3px solid var(--blue);
+        border-radius: 0 12px 12px 0;
+        padding: 24px 28px;
+        margin: 32px 0;
+      }
+
+      .callout p {
+        margin: 0;
+        font-size: 15px;
+        color: var(--mid);
+      }
+
+      .callout strong {
+        color: var(--blue);
+      }
+
+      /* ── QUOTE ───────────────────────────────── */
+      .pull-quote {
+        margin: 48px 0;
+        padding: 0 0 0 32px;
+        border-left: 2px solid var(--blue);
+      }
+
+      .pull-quote p {
+        font-family: "Fraunces", serif;
+        font-size: 24px;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--dark);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* ── DECISION CARDS ──────────────────────── */
+      .decision-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 32px 0;
+      }
+
+      .decision-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        transition: all 0.2s ease;
+      }
+
+      .decision-card:hover {
+        border-color: var(--blue);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+      }
+
+      .decision-card .card-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: var(--blue);
+        font-size: 16px;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .decision-card .card-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+
+      .decision-card .card-body {
+        font-size: 13.5px;
+        color: var(--soft);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ── COLOR SWATCHES ──────────────────────── */
+      .color-row {
+        display: flex;
+        gap: 12px;
+        margin: 24px 0;
+        flex-wrap: wrap;
+      }
+
+      .swatch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .swatch-circle {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .swatch-label {
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        color: var(--soft);
+        text-align: center;
+        line-height: 1.3;
+      }
+
+      /* ── TYPE SPECIMEN ───────────────────────── */
+      .type-specimen {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px;
+        margin: 24px 0;
+      }
+
+      .type-specimen .specimen-label {
+        font-family: "DM Mono", monospace;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+
+      .type-specimen .specimen-text {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .type-specimen .specimen-meta {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      /* ── PROCESS STEPS ───────────────────────── */
+      .process-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 32px 0;
+        position: relative;
+      }
+
+      .process-steps::before {
+        content: "";
+        position: absolute;
+        left: 20px;
+        top: 40px;
+        bottom: 40px;
+        width: 1px;
+        background: var(--border);
+      }
+
+      .process-step {
+        display: flex;
+        gap: 24px;
+        padding: 24px 0;
+        position: relative;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--white);
+        border: 2px solid var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--blue);
+        flex-shrink: 0;
+        z-index: 1;
+      }
+
+      .step-content .step-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 6px;
+      }
+
+      .step-content .step-body {
+        font-size: 14px;
+        color: var(--soft);
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      /* ── STAT ROW ────────────────────────────── */
+      .stat-row {
+        display: flex;
+        gap: 32px;
+        margin: 40px 0;
+        padding: 32px;
+        background: var(--dark);
+        border-radius: 20px;
+      }
+
+      .stat-item {
+        flex: 1;
+        text-align: center;
+      }
+
+      .stat-number {
+        font-family: "Fraunces", serif;
+        font-size: 42px;
+        font-weight: 300;
+        color: var(--white);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat-number span {
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: #64748b;
+        line-height: 1.4;
+      }
+
+      /* ── WHAT I'D FIX ────────────────────────── */
+      .improvement-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin: 32px 0;
+      }
+
+      .improvement-item {
+        display: flex;
+        gap: 16px;
+        padding: 20px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .improvement-item .imp-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        background: var(--accent);
+        color: var(--blue);
+        font-size: 14px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .improvement-item.done {
+        border-color: #bbf7d0;
+        background: #fafffc;
+      }
+      .improvement-item.done .imp-icon {
+        background: #dcfce7;
+        color: #15803d;
+      }
+
+      .improvement-item .imp-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 4px;
+      }
+
+      .improvement-item .imp-body {
+        font-size: 13.5px;
+        color: var(--soft);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ── CLOSING ─────────────────────────────── */
+      .closing-section {
+        background: var(--dark);
+        border-radius: 24px;
+        padding: 64px;
+        margin: 100px 80px;
+        max-width: calc(var(--content-max));
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .closing-section::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(142, 45, 226, 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .closing-section h2 {
+        color: var(--white);
+        font-size: clamp(28px, 3vw, 42px);
+        margin-bottom: 20px;
+      }
+
+      .closing-section p {
+        color: #94a3b8;
+        font-size: 16px;
+        max-width: 520px;
+      }
+
+      .closing-links {
+        display: flex;
+        gap: 16px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--blue);
+        color: var(--white);
+        padding: 14px 24px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .btn-primary:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--white);
+        padding: 14px 24px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      /* ── ANIMATIONS ──────────────────────────── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── PRODUCT MOCKUPS (recreated UI, not screenshots) ── */
+      .mock-window {
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow:
+          0 30px 80px -20px rgba(0, 0, 0, 0.45),
+          0 0 0 1px rgba(255, 255, 255, 0.06);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+      }
+
+      .mock-titlebar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 14px;
+        background: #f1f5f9;
+        border-bottom: 1px solid #e5e9f0;
+      }
+
+      .mock-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .mock-dot.r {
+        background: #ff5f57;
+      }
+      .mock-dot.y {
+        background: #febc2e;
+      }
+      .mock-dot.g {
+        background: #28c840;
+      }
+
+      .mock-caption {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 14px 0 10px;
+        font-family: "DM Mono", monospace;
+        font-size: 10.5px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .mock-caption i {
+        color: var(--blue);
+        font-size: 11px;
+      }
+
+      /* Hero mockup */
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 56px;
+        align-items: center;
+        width: 100%;
+        max-width: 1360px;
+      }
+
+      .hero-visual {
+        animation: fadeUp 0.7s 0.25s ease both;
+      }
+
+      .hero-mock-body {
+        padding: 18px 18px 20px;
+      }
+
+      .hero-mock-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      .hero-mock-logo {
+        font-size: 13px;
+        font-weight: 700;
+        color: #0f172a;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .hero-mock-logo i {
+        color: var(--blue);
+        font-size: 12px;
+      }
+
+      .hero-mock-badge {
+        background: #dcfce7;
+        color: #15803d;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 100px;
+      }
+
+      .hero-mock-bubble {
+        max-width: 82%;
+        padding: 9px 12px;
+        border-radius: 12px;
+        font-size: 11.5px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+      }
+
+      .hero-mock-bubble.user {
+        background: #f1f5f9;
+        color: #334155;
+        border-bottom-left-radius: 3px;
+      }
+
+      .hero-mock-bubble.ai {
+        background: var(--blue);
+        color: #fff;
+        margin-left: auto;
+        border-bottom-right-radius: 3px;
+      }
+
+      .hero-mock-chips {
+        display: flex;
+        gap: 8px;
+        margin: 14px 0 10px;
+        flex-wrap: wrap;
+      }
+
+      .hero-mock-chip {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: #f8faff;
+        border: 1px solid #e2e8f0;
+        border-radius: 9px;
+        padding: 6px 10px;
+        font-size: 10.5px;
+        font-weight: 600;
+        color: #334155;
+      }
+
+      .hero-mock-chip i {
+        font-size: 14px;
+      }
+      .hero-mock-chip.stat i {
+        color: #16a34a;
+      }
+      .hero-mock-chip.success i {
+        color: #16a34a;
+      }
+      .hero-mock-chip b {
+        color: #0f172a;
+      }
+
+      .hero-mock-suggestion {
+        display: flex;
+        gap: 8px;
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 10.5px;
+        line-height: 1.5;
+        color: #92400e;
+      }
+
+      .hero-mock-suggestion i {
+        color: #d97706;
+        margin-top: 1px;
+      }
+
+      /* Feature tab mockup */
+      .feature-mock-tabs {
+        display: flex;
+        gap: 2px;
+        padding: 0 14px;
+        background: #fafbff;
+        border-bottom: 1px solid #e5e9f0;
+        overflow-x: auto;
+      }
+
+      .feature-mock-tab {
+        padding: 12px 14px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #94a3b8;
+        white-space: nowrap;
+        border-bottom: 2px solid transparent;
+      }
+
+      .feature-mock-tab.active {
+        color: var(--blue);
+        font-weight: 600;
+        border-bottom: 2px solid var(--blue);
+      }
+
+      .feature-mock-panel {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 28px;
+        padding: 28px;
+        background: linear-gradient(180deg, #f6fbf9, #ffffff);
+      }
+
+      .feature-mock-copy h4 {
+        font-family: "Fraunces", serif;
+        font-size: 20px;
+        font-weight: 500;
+        color: #0f172a;
+        margin-bottom: 10px;
+      }
+
+      .feature-mock-copy p {
+        font-size: 12.5px;
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+
+      .feature-mock-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .feature-mock-list li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #334155;
+        font-weight: 500;
+      }
+
+      .feature-mock-list i {
+        color: #16a34a;
+        font-size: 12px;
+      }
+
+      .feature-mock-chat {
+        background: #fff;
+        border: 1px solid #e5e9f0;
+        border-radius: 12px;
+        padding: 14px;
+      }
+
+      .feature-mock-chat .fmc-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11.5px;
+        font-weight: 600;
+        color: #0f172a;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .fmc-avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .fmc-online {
+        margin-left: auto;
+        font-size: 9.5px;
+        color: #16a34a;
+        font-weight: 600;
+      }
+
+      .fmc-msg {
+        font-size: 11px;
+        line-height: 1.5;
+        padding: 8px 10px;
+        border-radius: 9px;
+        margin-bottom: 7px;
+        max-width: 90%;
+      }
+      .fmc-msg.customer {
+        background: var(--blue);
+        color: #fff;
+        margin-left: auto;
+      }
+      .fmc-msg.ai {
+        background: #f1f5f9;
+        color: #334155;
+      }
+
+      .fmc-action {
+        font-size: 14px;
+        color: #475569;
+        background: #f8faff;
+        border: 1px dashed #cbd5e1;
+        border-radius: 8px;
+        padding: 7px 9px;
+        margin: 8px 0;
+      }
+
+      .fmc-action i {
+        color: var(--blue);
+        margin-right: 4px;
+      }
+
+      .fmc-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f0fdf4;
+        border-radius: 8px;
+        padding: 8px 10px;
+        margin-top: 4px;
+      }
+
+      .fmc-footer .fmc-resolved {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10.5px;
+        font-weight: 600;
+        color: #15803d;
+      }
+      .fmc-footer .fmc-rate {
+        font-size: 12px;
+        font-weight: 700;
+        color: #15803d;
+      }
+
+      /* Fold thumbnails for Layout & Conversion */
+      .step-thumb {
+        width: 76px;
+        height: 54px;
+        border-radius: 8px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        position: relative;
+      }
+
+      .step-thumb.hero-thumb {
+        background: var(--dark);
+      }
+      .step-thumb.hero-thumb::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 8px;
+        width: 40px;
+        height: 5px;
+        background: linear-gradient(90deg, #60a5fa, #a78bfa);
+        border-radius: 2px;
+      }
+      .step-thumb.hero-thumb::after {
+        content: "";
+        position: absolute;
+        top: 22px;
+        right: 8px;
+        width: 22px;
+        height: 26px;
+        background: #fff;
+        border-radius: 3px;
+        opacity: 0.9;
+      }
+
+      .step-thumb.feature-thumb {
+        background: #f6fbf9;
+      }
+      .step-thumb.feature-thumb::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        height: 6px;
+        background: #dcefe8;
+        border-radius: 2px;
+      }
+      .step-thumb.feature-thumb::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 3px;
+      }
+
+      .step-thumb.how-thumb {
+        background: #f8faff;
+      }
+      .step-thumb.how-thumb .thumb-dots {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .step-thumb.how-thumb .thumb-dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid var(--blue);
+        background: #fff;
+      }
+
+      .step-thumb.cta-thumb {
+        background: linear-gradient(135deg, #2563eb, #8e2de2);
+      }
+      .step-thumb.cta-thumb::before {
+        content: "";
+        position: absolute;
+        top: 16px;
+        left: 10px;
+        right: 10px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 2px;
+      }
+      .step-thumb.cta-thumb::after {
+        content: "";
+        position: absolute;
+        bottom: 12px;
+        left: 10px;
+        width: 26px;
+        height: 9px;
+        background: #fff;
+        border-radius: 3px;
+      }
+
+      .process-step {
+        align-items: flex-start;
+      }
+      .step-content {
+        flex: 1;
+      }
+
+      /* Phone frame for mobile-decisions paragraph */
+      .phone-frame {
+        width: 168px;
+        border-radius: 22px;
+        background: var(--dark);
+        padding: 8px;
+        box-shadow: 0 24px 60px -16px rgba(0, 0, 0, 0.4);
+      }
+
+      .phone-screen {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        padding: 14px 12px;
+      }
+
+      .phone-mock-chat {
+        background: #f8faff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 8px;
+        margin-bottom: 12px;
+      }
+
+      .phone-mock-chat .pmc-line {
+        height: 5px;
+        background: #e2e8f0;
+        border-radius: 3px;
+        margin-bottom: 5px;
+      }
+      .phone-mock-chat .pmc-line.short {
+        width: 60%;
+      }
+      .phone-mock-chat .pmc-bubble {
+        background: var(--blue);
+        height: 16px;
+        border-radius: 5px;
+        width: 70%;
+        margin-left: auto;
+        margin-top: 6px;
+      }
+
+      .phone-mock-h {
+        font-size: 11px;
+        font-weight: 700;
+        color: #0f172a;
+        line-height: 1.3;
+        margin-bottom: 8px;
+      }
+      .phone-mock-btn {
+        background: var(--blue);
+        color: #fff;
+        font-size: 9px;
+        font-weight: 600;
+        padding: 7px;
+        border-radius: 6px;
+        text-align: center;
+      }
+
+      .mobile-decision-row {
+        display: flex;
+        gap: 28px;
+        align-items: flex-start;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+
+      .mobile-decision-row p {
+        flex: 1;
+        min-width: 240px;
+        margin: 0;
+      }
+
+      /* Component states mockup */
+      .states-mock {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        margin: 24px 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .states-col {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .states-col .states-label {
+        font-family: "DM Mono", monospace;
+        font-size: 9.5px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+
+      .state-pill {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: var(--blue);
+        color: #fff;
+      }
+      .state-pill.hover {
+        background: #1d4ed8;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+      .state-pill.disabled {
+        background: #cbd5e1;
+        color: #94a3b8;
+      }
+      .state-pill.focus {
+        background: var(--blue);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
+      }
+
+      .state-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 100px;
+        background: #dcfce7;
+        color: #15803d;
+      }
+      .state-badge.pending {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .state-badge.error {
+        background: #fee2e2;
+        color: #b91c1c;
+      }
+
+      /* Real type scale specimen */
+      .type-real-block {
+        margin: 8px 0 28px;
+      }
+      .type-real-block .tr-tag {
+        font-family: "DM Mono", monospace;
+        font-size: 14px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+      .type-real-block .tr-h1 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(28px, 3.4vw, 44px);
+        font-weight: 300;
+        line-height: 1.08;
+        color: var(--dark);
+      }
+      .type-real-block .tr-h2 {
+        font-family: "Fraunces", serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: var(--dark);
+      }
+      .type-real-block .tr-body {
+        font-size: 15px;
+        color: var(--soft);
+        max-width: 480px;
+      }
+
+      .shipped-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "DM Mono", monospace;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #15803d;
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: 100px;
+        padding: 4px 10px;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+
+      /* ── RESPONSIVE ──────────────────────────── */
+      @media (max-width: 900px) {
+        .side-nav {
+          display: none;
+        }
+        .main-content {
+          max-width: 100%;
+        }
+        section {
+          padding: 60px 32px;
+        }
+        .hero {
+          padding: 60px 32px;
+        }
+        .decision-grid {
+          grid-template-columns: 1fr;
+        }
+        .stat-row {
+          flex-direction: column;
+          gap: 24px;
+        }
+        .closing-section {
+          margin: 60px 32px;
+          padding: 40px 32px;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .feature-mock-panel {
+          grid-template-columns: 1fr;
+        }
+        .mobile-decision-row {
+          flex-direction: column;
+        }
+        .mobile-decision-row .phone-frame {
+          margin: 0 auto;
+        }
+        .process-step {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .feature-mock-tabs {
+          padding: 0 8px;
+        }
+        .hero-visual {
+          order: -1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- HERO -->
+        <div class="hero" id="overview">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="hero-tag">
+                <div class="tag-dot"></div>
+                <span>Design Case Study</span>
+              </div>
+
+              <h1>Making support feel like a <em>conversation</em></h1>
+
+              <p class="hero-sub">
+                A complete landing page, visual identity, and design system for
+                HelpFlow AI - an AI-powered customer support platform. One
+                designer, three days, nothing handed off half-finished.
+              </p>
+
+              <div class="hero-meta">
+                <div class="hero-meta-item">
+                  <div class="label">Designer</div>
+                  <div class="value">Jayaprakash J</div>
+                </div>
+                <div class="hero-meta-item">
+                  <div class="label">Role</div>
+                  <div class="value">UI / Visual Designer</div>
+                </div>
+                <div class="hero-meta-item">
+                  <div class="label">Timeline</div>
+                  <div class="value">3-Day Sprint</div>
+                </div>
+                <div class="hero-meta-item">
+                  <div class="label">Year</div>
+                  <div class="value">2025</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="mock-window">
+                <div class="mock-titlebar">
+                  <span class="mock-dot r"></span
+                  ><span class="mock-dot y"></span
+                  ><span class="mock-dot g"></span>
+                </div>
+                <div class="hero-mock-body">
+                  <div class="hero-mock-nav">
+                    <div class="hero-mock-logo">
+                      <i class="fa-solid fa-infinity"></i>HelpFlowAI
+                    </div>
+                    <span class="hero-mock-badge">Resolved</span>
+                  </div>
+                  <div class="hero-mock-bubble user">
+                    Hi, I'm having trouble syncing my data with the new
+                    integration.
+                  </div>
+                  <div class="hero-mock-bubble ai">
+                    Looks like your API key might be expired based on the logs.
+                    Want me to generate a new one?
+                  </div>
+                  <div class="hero-mock-bubble user">
+                    Yes, could you make it faster!
+                  </div>
+                  <div class="hero-mock-chips">
+                    <div class="hero-mock-chip stat">
+                      <i class="fa-solid fa-arrow-trend-up"></i>Resolution rate
+                      <b>98.4%</b>
+                    </div>
+                    <div class="hero-mock-chip success">
+                      <i class="fa-solid fa-circle-check"></i>Ticket solved
+                    </div>
+                  </div>
+                  <div class="hero-mock-suggestion">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span
+                      ><strong>AI suggestion -</strong> reset API credentials
+                      and re-authenticate via OAuth.</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="mock-caption">
+                <i class="fa-solid fa-camera"></i>Recreated from the shipped
+                high-fidelity screen, not a placeholder
+              </div>
+            </div>
+          </div>
+
+          <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            <span>Scroll to explore</span>
+          </div>
+        </div>
+
+        <!-- BRIEF -->
+        <section id="brief" class="reveal">
+          <span class="section-tag">01 - The Brief</span>
+          <h2>
+            A product that needed to <em>earn trust</em> before asking for a
+            signup
+          </h2>
+
+          <p>
+            The task was clear on the surface - design a landing page for
+            HelpFlow AI, an AI-powered help desk targeting startup founders and
+            customer support teams. The goal: waitlist signups.
+          </p>
+
+          <p>
+            But the real brief underneath?
+            <strong
+              >Make a stranger trust an AI product enough to hand over their
+              email address.</strong
+            >
+            That's a harder problem. And it starts before a single pixel is
+            placed.
+          </p>
+
+          <div class="callout">
+            <p>
+              <strong>Design constraint:</strong> "Warm + professional" visual
+              direction. 3-day deadline. Deliverables: high-fidelity desktop,
+              mobile responsive, design system, OG image, logo variants, and
+              component library.
+            </p>
+          </div>
+
+          <h3>Who I designed for</h3>
+          <p>Three distinct users shaped every decision on this page:</p>
+
+          <div class="decision-grid">
+            <div class="decision-card">
+              <span class="card-icon"><i class="fa-solid fa-rocket"></i></span>
+              <div class="card-title">Startup Founders</div>
+              <p class="card-body">
+                Results-oriented, time-poor. Need to feel the value before they
+                read the headline. They scroll fast and decide faster.
+              </p>
+            </div>
+            <div class="decision-card">
+              <span class="card-icon"><i class="fa-solid fa-headset"></i></span>
+              <div class="card-title">Support Team Managers</div>
+              <p class="card-body">
+                Practical, process-driven. They evaluate tools by how well
+                features map to their existing workflow - not by aesthetics.
+              </p>
+            </div>
+            <div class="decision-card">
+              <span class="card-icon"
+                ><i class="fa-solid fa-magnifying-glass"></i
+              ></span>
+              <div class="card-title">Career Switchers</div>
+              <p class="card-body">
+                Exploring AI tools. Need reassurance and clarity over
+                excitement. Trust before transaction.
+              </p>
+            </div>
+            <div class="decision-card">
+              <span class="card-icon"
+                ><i class="fa-solid fa-lightbulb"></i
+              ></span>
+              <div class="card-title">The Universal Need</div>
+              <p class="card-body">
+                Every user needed to feel three things in order - this is
+                credible, this solves my problem, this is worth my email.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISUAL DIRECTION -->
+        <section id="visual" class="reveal">
+          <span class="section-tag">02 - Visual Direction</span>
+          <h2>Warm + professional doesn't mean <em>add warm colors</em></h2>
+
+          <p>
+            The brief asked for warm and professional. My first instinct as a
+            storyteller was - this is a feeling, not a color instruction.
+            Designing literally warm means oranges, ambers, and corals alongside
+            blue. That creates visual competition. Two dominant personalities
+            fighting for the user's attention.
+          </p>
+
+          <div class="pull-quote">
+            <p>
+              "One warm moment, used intentionally, is more powerful than two
+              competing ones."
+            </p>
+          </div>
+
+          <p>
+            So I made a deliberate split.
+            <strong>Blue as the professional foundation</strong> - the dominant
+            trust signal in B2B SaaS. Intercom, Zendesk, Freshdesk all anchor in
+            blue for exactly this reason. And
+            <strong>a purple-to-blue gradient as the single warm accent</strong>
+            - used in two specific moments only.
+          </p>
+
+          <h3>The Color System</h3>
+
+          <div class="color-row">
+            <div class="swatch">
+              <div class="swatch-circle" style="background: #2563eb"></div>
+              <div class="swatch-label">Primary<br />#2563EB</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-circle" style="background: #152e63"></div>
+              <div class="swatch-label">Dark<br />#152E63</div>
+            </div>
+            <div class="swatch">
+              <div
+                class="swatch-circle"
+                style="background: linear-gradient(135deg, #8e2de2, #4a00e0)"
+              ></div>
+              <div class="swatch-label">Gradient<br />Accent</div>
+            </div>
+            <div class="swatch">
+              <div
+                class="swatch-circle"
+                style="background: #f6f9ff; border: 1px solid #e2e8f0"
+              ></div>
+              <div class="swatch-label">Surface<br />#F6F9FF</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-circle" style="background: #16a34a"></div>
+              <div class="swatch-label">Success<br />#16A34A</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-circle" style="background: #eab308"></div>
+              <div class="swatch-label">Warning<br />#EAB308</div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-circle" style="background: #fb3748"></div>
+              <div class="swatch-label">Error<br />#FB3748</div>
+            </div>
+          </div>
+
+          <p>
+            Semantic colors aren't decorative - they carry meaning across every
+            state. Red for urgent alerts and error states. Yellow for warnings
+            and scheduled follow-ups. Green for resolved tickets and success
+            confirmations. Each mapped intentionally to real product moments,
+            not just added because every design system has them.
+          </p>
+
+          <h3>Where the accent actually lands</h3>
+          <p>
+            Two moments only, as promised - the closing CTA and the hero's
+            dashed AI-thinking line. Nowhere else. If a color shows up
+            everywhere, it stops meaning anything.
+          </p>
+
+          <div class="mock-window" style="max-width: 620px">
+            <div class="mock-titlebar">
+              <span class="mock-dot r"></span><span class="mock-dot y"></span
+              ><span class="mock-dot g"></span>
+            </div>
+            <div
+              style="
+                padding: 22px;
+                background: linear-gradient(135deg, #2563eb, #8e2de2);
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  font-family: -apple-system, sans-serif;
+                  font-size: 26px;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 6px;
+                "
+              >
+                Your competitors are already on the wait-list.
+              </div>
+              <div
+                style="
+                  font-family: -apple-system, sans-serif;
+                  font-size: 16px;
+                  color: rgba(255, 255, 255, 0.85);
+                  margin-bottom: 14px;
+                "
+              >
+                No credit card, no commitment - just earlier access.
+              </div>
+              <div style="display: inline-flex; gap: 8px">
+                <span
+                  style="
+                    background: #fff;
+                    color: #1d4ed8;
+                    font-size: 14px;
+                    font-weight: 700;
+                    padding: 8px 16px;
+                    border-radius: 8px;
+                  "
+                  >Join Waitlist</span
+                >
+                <span
+                  style="
+                    border: 1px solid rgba(255, 255, 255, 0.5);
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 600;
+                    padding: 8px 16px;
+                    border-radius: 8px;
+                  "
+                  >Contact Sales</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <h3>The OG Image - A Deliberate Split</h3>
+          <p>
+            The OG image uses a dark, moody, abstract 3D aesthetic -
+            deliberately different from the landing page.
+            <strong>This was strategic, not inconsistent.</strong>
+          </p>
+
+          <div class="callout">
+            <p>
+              The OG image's job is to <strong>stop the scroll</strong> on
+              LinkedIn or in a Slack preview. The landing page's job is to
+              <strong>convert attention into a signup</strong>. Two different
+              jobs. Two different visual languages. One brand connecting them.
+            </p>
+          </div>
+        </section>
+
+        <!-- TYPOGRAPHY -->
+        <section id="typography" class="reveal">
+          <span class="section-tag">03 - Typography</span>
+          <h2>The typeface had to feel <em>technically credible</em></h2>
+
+          <p>
+            Geist was chosen for three specific reasons - it has technical DNA
+            that matches an AI product, it holds legibility at small sizes
+            critical for component text, and its geometric structure
+            communicates modern professionalism without coldness.
+          </p>
+
+          <div class="type-specimen">
+            <div class="specimen-label">Geist - Primary Typeface</div>
+            <div
+              class="specimen-text"
+              style="font-family: sans-serif; letter-spacing: -1px"
+            >
+              AaBbCc
+            </div>
+            <div class="specimen-meta">
+              H1 · 56px · Black weight · Hero headlines
+            </div>
+          </div>
+
+          <h3>Applied to real copy, not filler text</h3>
+          <p>
+            A specimen only proves so much. Here's the scale set against the
+            actual page copy - the words a visitor would read in order.
+          </p>
+
+          <div class="type-real-block">
+            <div class="tr-tag">Fold 01 - Hero H1</div>
+            <div class="tr-h1">Resolve 80% of tickets before you notice.</div>
+          </div>
+          <div class="type-real-block">
+            <div class="tr-tag">Fold 02 - Section H2</div>
+            <div class="tr-h2">
+              Built for teams that answer 500+ tickets a week
+            </div>
+          </div>
+          <div class="type-real-block">
+            <div class="tr-tag">Body - Lead paragraph</div>
+            <div class="tr-body">
+              HelpFlow reads your docs, learns your product, and answers tickets
+              in seconds - so your team handles only the ones that matter.
+            </div>
+          </div>
+
+          <h3>Type Scale Decisions</h3>
+          <div class="decision-grid">
+            <div class="decision-card">
+              <div class="card-title">H1 - 56px Geist Black</div>
+              <p class="card-body">
+                Hero headline only. Maximum visual authority. Sets brand
+                personality before anything is read.
+              </p>
+            </div>
+            <div class="decision-card">
+              <div class="card-title">H2 - 48px Geist Bold</div>
+              <p class="card-body">
+                Section headings. Clear hierarchy without competing with H1.
+              </p>
+            </div>
+            <div class="decision-card">
+              <div class="card-title">Body B-1 - 20px / 28px</div>
+              <p class="card-body">
+                Lead paragraphs. Line height at 1.4x ratio - the minimum for
+                comfortable reading on web.
+              </p>
+            </div>
+            <div class="decision-card">
+              <div class="card-title">Body B-2 - 16px / 20px</div>
+              <p class="card-body">
+                General interface text. Standard readable size for SaaS products
+                across all screen densities.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DESIGN SYSTEM -->
+        <section id="system" class="reveal">
+          <span class="section-tag">04 - Design System</span>
+          <h2>System first. <em>Screens second.</em></h2>
+
+          <p>
+            Before designing a single screen, I built the complete design
+            system. This was a deliberate decision - not a checkbox exercise. A
+            system created before screens ensures every decision is consistent,
+            developer-ready, and scalable.
+          </p>
+
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="stat-number"><span>8pt</span></div>
+              <div class="stat-label">Grid system<br />for all spacing</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number"><span>7</span></div>
+              <div class="stat-label">Color token<br />categories</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number"><span>10</span></div>
+              <div class="stat-label">Typography<br />scale levels</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number"><span>3</span></div>
+              <div class="stat-label">Breakpoints<br />documented</div>
+            </div>
+          </div>
+
+          <h3>Developer-Ready Thinking</h3>
+          <p>
+            Every layer in every component is named. Not "Rectangle 24" - but
+            <strong>btn-primary/hover</strong>,
+            <strong>card-feature/default</strong>,
+            <strong>nav-item/active</strong>. This bridges the gap between
+            design and development without a lengthy handoff call.
+          </p>
+
+          <div class="callout">
+            <p>
+              I've converted my own designs to functioning websites. That
+              experience - wondering what to name a div, feeling the friction of
+              a poorly structured file - taught me that
+              <strong>conversion is as important as designing.</strong> That
+              thinking lives in every component I build.
+            </p>
+          </div>
+
+          <h3>Component States</h3>
+          <p>
+            Every interactive component was documented with states - not just
+            the default appearance. Button hover, focus rings for WCAG
+            accessibility, disabled states, and loading states for the primary
+            CTA. Because a component without states isn't a component - it's a
+            screenshot.
+          </p>
+
+          <div class="states-mock">
+            <div class="states-col">
+              <span class="states-label">btn-primary</span>
+              <div style="display: flex; gap: 10px">
+                <span class="state-pill">Join Waitlist</span>
+                <span class="state-pill hover">Join Waitlist</span>
+                <span class="state-pill focus">Join Waitlist</span>
+                <span class="state-pill disabled">Join Waitlist</span>
+              </div>
+            </div>
+            <div class="states-col">
+              <span class="states-label">status-badge</span>
+              <div style="display: flex; gap: 10px">
+                <span class="state-badge"
+                  ><i class="fa-solid fa-circle-check"></i>Resolved</span
+                >
+                <span class="state-badge pending"
+                  ><i class="fa-solid fa-clock"></i>In Progress</span
+                >
+                <span class="state-badge error"
+                  ><i class="fa-solid fa-triangle-exclamation"></i
+                  >Escalated</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURE ARCHITECTURE -->
+        <section id="features" class="reveal">
+          <span class="section-tag">05 - Feature Architecture</span>
+          <h2>Six features, <em>one</em> panel - not six cards</h2>
+
+          <p>
+            The first version of this section did what most SaaS pages do: an
+            icon, a label, one line, repeated six times in a grid. It's easy to
+            build and easy to ignore. Nobody remembers a wall of icons.
+          </p>
+
+          <p>
+            So the feature list became a tabbed module instead -
+            <strong
+              >AI Chat Assistant, Ticket Management, Smart Suggestions, Customer
+              History, Priority Alerts, Performance Overview</strong
+            >
+            - where each tab loads a real interface moment, not a caption. The
+            visitor isn't told the AI Chat Assistant resolves tickets. They
+            watch it happen: a customer's message, the AI's diagnosis, the
+            action it took, the resolution rate it earned.
+          </p>
+
+          <div class="mock-window">
+            <div class="mock-titlebar">
+              <span class="mock-dot r"></span><span class="mock-dot y"></span
+              ><span class="mock-dot g"></span>
+            </div>
+            <div class="feature-mock-tabs">
+              <span class="feature-mock-tab active">AI Chat Assistant</span>
+              <span class="feature-mock-tab">Ticket Management</span>
+              <span class="feature-mock-tab">Smart Suggestions</span>
+              <span class="feature-mock-tab">Customer History</span>
+              <span class="feature-mock-tab">Priority Alerts</span>
+              <span class="feature-mock-tab">Performance Overview</span>
+            </div>
+            <div class="feature-mock-panel">
+              <div class="feature-mock-copy">
+                <h4>AI Chat Assistant</h4>
+                <p>
+                  Connect your help docs once. HelpFlow learns them, then
+                  handles common questions automatically - day or night.
+                </p>
+                <ul class="feature-mock-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>24/7 automated
+                    resolution
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>Natural language
+                    understanding
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>Automatic
+                    documentation sync
+                  </li>
+                </ul>
+              </div>
+              <div class="feature-mock-chat">
+                <div class="fmc-head">
+                  <div class="fmc-avatar">H</div>
+                  HelpFlow AI<span class="fmc-online">● Online</span>
+                </div>
+                <div class="fmc-msg customer">
+                  Hi, my API key isn't working after the update. Any idea?
+                </div>
+                <div class="fmc-msg ai">
+                  Hey Sarah! Looks like your key expired after the v2.4
+                  migration. I can generate a fresh one - shall I also
+                  re-authenticate via OAuth?
+                </div>
+                <div class="fmc-action">
+                  <i class="fa-solid fa-bolt"></i>AI ACTION - Reset API
+                  credentials and re-authenticate via OAuth 2.0
+                </div>
+                <div class="fmc-footer">
+                  <span class="fmc-resolved"
+                    ><i class="fa-solid fa-circle-check"></i>Ticket Resolved ·
+                    via AI Agent</span
+                  >
+                  <span class="fmc-rate">98.4%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-caption">
+            <i class="fa-solid fa-camera"></i>Recreated from the updated
+            high-fidelity feature module
+          </div>
+
+          <h3>Why a tab bar, and why this order</h3>
+          <p>
+            The six tabs aren't alphabetical - they follow how a support lead's
+            day actually runs: a ticket comes in and gets auto-resolved (<strong
+              >AI Chat Assistant</strong
+            >), the rest get triaged (<strong>Ticket Management</strong>), the
+            agent gets a nudge on what to say next (<strong
+              >Smart Suggestions</strong
+            >), context loads automatically (<strong>Customer History</strong>),
+            anything urgent jumps the queue (<strong>Priority Alerts</strong>),
+            and the manager checks the numbers at the end of the week (<strong
+              >Performance Overview</strong
+            >). The order is the workflow, not a menu.
+          </p>
+
+          <div class="callout">
+            <p>
+              A default tab matters as much as the tabs themselves.
+              <strong>AI Chat Assistant loads first</strong> because it's the
+              single feature that justifies the product's core claim - resolving
+              tickets before a human notices. Every other tab supports that
+              promise; this one proves it.
+            </p>
+          </div>
+        </section>
+
+        <!-- LAYOUT & CONVERSION -->
+        <section id="layout" class="reveal">
+          <span class="section-tag">06 - Layout & Conversion</span>
+          <h2>Every section was built to <em>earn the next scroll</em></h2>
+
+          <p>
+            A landing page is a conversation. Each section has one job - move
+            the user one step closer to trust. I designed this page as a
+            conversion funnel:
+          </p>
+
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-number">01</div>
+              <div class="step-thumb hero-thumb"></div>
+              <div class="step-content">
+                <div class="step-title">
+                  Hero - Establish credibility instantly
+                </div>
+                <p class="step-body">
+                  Dual CTA strategy: primary "Join Waitlist" for ready users,
+                  secondary "Watch a 90-sec Demo" for hesitant ones. The product
+                  mockup shows a real support moment - customer asks, AI
+                  resolves, status changes to Resolved. Cause and effect before
+                  the headline is even finished.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">02</div>
+              <div class="step-thumb feature-thumb"></div>
+              <div class="step-content">
+                <div class="step-title">
+                  Features - One live panel, not a grid of six
+                </div>
+                <p class="step-body">
+                  The tab order mirrors the actual support workflow, from AI
+                  Chat Assistant through to Performance Overview - see
+                  <a
+                    href="#features"
+                    style="color: var(--blue); font-weight: 600"
+                    >Feature Architecture</a
+                  >. A visitor isn't scanning six icons; they're watching one
+                  real ticket get solved.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">03</div>
+              <div class="step-thumb how-thumb">
+                <div class="thumb-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="step-content">
+                <div class="step-title">How It Works - Remove friction</div>
+                <p class="step-body">
+                  Three steps: Customer Asks → AI Responds → Issue Resolved.
+                  Makes the product feel simple before commitment. Reduces the
+                  cognitive barrier to signing up.
+                </p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">04</div>
+              <div class="step-thumb cta-thumb"></div>
+              <div class="step-content">
+                <div class="step-title">Final CTA - Convert with warmth</div>
+                <p class="step-body">
+                  The gradient section - the warmest, most emotionally charged
+                  moment on the page - appears at the exact moment of decision.
+                  Cool and trustworthy throughout. Warm and exciting at
+                  conversion. That contrast is intentional storytelling.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Mobile - Not a Shrunk Desktop</h3>
+          <div class="mobile-decision-row">
+            <p>
+              At 375px, mobile wasn't treated as a collapsed version of desktop.
+              The hero product mockup moves above the headline to lead with
+              visual proof before text. The feature tabs collapse to a
+              horizontally-scrollable strip instead of wrapping. Navigation
+              condenses with the primary CTA always visible above the fold.
+            </p>
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-mock-chat">
+                  <div class="pmc-line"></div>
+                  <div class="pmc-line short"></div>
+                  <div class="pmc-bubble"></div>
+                </div>
+                <div class="phone-mock-h">
+                  Resolve 80% of tickets before you notice.
+                </div>
+                <div class="phone-mock-btn">Join Waitlist</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WHAT I'D IMPROVE -->
+        <section id="reflection" class="reveal">
+          <span class="section-tag">07 - Honest Reflection</span>
+          <h2>What I said I'd fix - <em>and then fixed</em></h2>
+
+          <p>
+            Self-awareness is part of good design, but it means nothing if it
+            stops at a bullet point. The first version of this case study
+            flagged two gaps below as future work. Both were rebuilt into this
+            version instead. Two open items remain, listed honestly.
+          </p>
+
+          <div class="improvement-list">
+            <div class="improvement-item done">
+              <div class="imp-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div class="imp-title">
+                  Larger, legible hero mockup<span class="shipped-tag"
+                    ><i class="fa-solid fa-check"></i>Shipped in this pass</span
+                  >
+                </div>
+                <p class="imp-body">
+                  The hero now shows one clear cause-and-effect moment at
+                  readable size - customer asks, AI diagnoses, status flips to
+                  Resolved - sitting beside the headline instead of shrunk
+                  beneath it. See section
+                  <a
+                    href="#overview"
+                    style="color: var(--blue); font-weight: 600"
+                    >Overview</a
+                  >.
+                </p>
+              </div>
+            </div>
+            <div class="improvement-item done">
+              <div class="imp-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div class="imp-title">
+                  Feature cards that show, not tell<span class="shipped-tag"
+                    ><i class="fa-solid fa-check"></i>Shipped in this pass</span
+                  >
+                </div>
+                <p class="imp-body">
+                  The six-icon grid became a tabbed module with a real chat
+                  panel underneath. See section
+                  <a
+                    href="#features"
+                    style="color: var(--blue); font-weight: 600"
+                    >Feature Architecture</a
+                  >
+                  for the reasoning behind the tab order.
+                </p>
+              </div>
+            </div>
+            <div class="improvement-item">
+              <div class="imp-icon">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <div>
+                <div class="imp-title">
+                  Prototype interactions & micro-animations
+                </div>
+                <p class="imp-body">
+                  CTA hover animation, smooth scroll between sections, a
+                  waitlist form submission success state. The page needs to feel
+                  alive - not just look right. Still open; needs a prototyping
+                  pass in Figma before it's real.
+                </p>
+              </div>
+            </div>
+            <div class="improvement-item">
+              <div class="imp-icon">
+                <i class="fa-solid fa-universal-access"></i>
+              </div>
+              <div>
+                <div class="imp-title">
+                  WCAG contrast audit on the gradient headline
+                </div>
+                <p class="imp-body">
+                  The purple gradient headline needs a formal contrast ratio
+                  check. Visual choice vs accessibility requirement - that
+                  tension needs a deliberate resolution, not an assumption.
+                  Still open.
+                </p>
+              </div>
+            </div>
+            <div class="improvement-item">
+              <div class="imp-icon"><i class="fa-solid fa-comments"></i></div>
+              <div>
+                <div class="imp-title">Real social proof</div>
+                <p class="imp-body">
+                  "Join 500+ teams" is a placeholder. Real logos, real
+                  testimonials, or a named person with a job title would turn a
+                  generic claim into earned credibility. Still open - this needs
+                  actual customers, not a design fix.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CLOSING -->
+        <div class="closing-section reveal" id="closing">
+          <span class="section-tag" style="color: #60a5fa">Final Thought</span>
+          <h2>Design is <em>chaotic</em> - and that's more honest</h2>
+          <p>
+            Teaching design gave me deep theoretical foundations. But what I
+            came looking for was the real thing - the deadlines, the tradeoffs,
+            the iteration, the moment you ask "did we actually make an impact?"
+            That chaos is more honest than any classroom exercise. And I'm ready
+            for it.
+          </p>
+
+          <div class="closing-links">
+            <a
+              href="https://www.behance.net/pako_prakash"
+              target="_blank"
+              class="btn-primary"
+            >
+              View Portfolio →
+            </a>
+            <a href="mailto:prakashstr.vdm@gmail.com" class="btn-ghost">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <!-- RIGHT NAV -->
+      <nav class="side-nav">
+        <span class="nav-label">Case Study</span>
+        <ul>
+          <li>
+            <a href="#overview" class="nav-link active"
+              ><span class="dot"></span>Overview</a
+            >
+          </li>
+          <li>
+            <a href="#brief" class="nav-link"
+              ><span class="dot"></span>The Brief</a
+            >
+          </li>
+          <li>
+            <a href="#visual" class="nav-link"
+              ><span class="dot"></span>Visual Direction</a
+            >
+          </li>
+          <li>
+            <a href="#typography" class="nav-link"
+              ><span class="dot"></span>Typography</a
+            >
+          </li>
+          <li>
+            <a href="#system" class="nav-link"
+              ><span class="dot"></span>Design System</a
+            >
+          </li>
+          <li>
+            <a href="#features" class="nav-link"
+              ><span class="dot"></span>Feature Architecture</a
+            >
+          </li>
+          <li>
+            <a href="#layout" class="nav-link"
+              ><span class="dot"></span>Layout & Conversion</a
+            >
+          </li>
+          <li>
+            <a href="#reflection" class="nav-link"
+              ><span class="dot"></span>Honest Reflection</a
+            >
+          </li>
+          <li>
+            <a href="#closing" class="nav-link"
+              ><span class="dot"></span>Final Thought</a
+            >
+          </li>
+        </ul>
+
+        <div class="nav-divider"></div>
+
+        <div class="nav-author">
+          <div class="author-name">Jayaprakash J</div>
+          <div class="author-role">Visual & UI Designer</div>
+          <div class="author-links">
+            <a href="https://www.behance.net/pako_prakash" target="_blank"
+              >Behance</a
+            >
+            <a
+              href="https://www.linkedin.com/in/jayaprakash-j-320364328/"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <script>
+      // Scroll spy for nav
+      const sections = document.querySelectorAll("[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => link.classList.remove("active"));
+              const active = document.querySelector(
+                `.nav-link[href="#${entry.target.id}"]`,
+              );
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-30% 0px -60% 0px" },
+      );
+
+      sections.forEach((s) => observer.observe(s));
+
+      // Reveal on scroll
+      const reveals = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      reveals.forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>
