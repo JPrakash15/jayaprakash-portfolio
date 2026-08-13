@@ -1034,7 +1034,7 @@ details.deep-dive[open] summary::after {
   white-space: nowrap;
 
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.267);
+  -webkit-text-stroke: 0.1rem rgba(255, 255, 255, 0.267);
 
   pointer-events: none;
   user-select: none;
