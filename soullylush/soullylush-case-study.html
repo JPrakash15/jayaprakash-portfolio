@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soullylush | D2C Product Design Case Study · Jayaprakash</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          void:    '#080F0A',
+          forest:  '#0D1C11',
+          canopy:  '#142918',
+          moss:    '#1E3D27',
+          fern:    '#2D6A4F',
+          sage:    '#52B788',
+          mint:    '#95D5B2',
+          cream:   '#F0E8D5',
+          parchment: '#E8DDCA',
+          ember:   '#D4622A',
+          gold:    '#C9A96E',
+          smoke:   '#8A9E8E',
+        },
+        fontFamily: {
+          display: ['Cormorant Garamond', 'serif'],
+          mono:    ['Space Mono', 'monospace'],
+          body:    ['Outfit', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="hero-gradient">
+
+<!-- Custom Cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Progress Bar -->
+<div id="progress"></div>
+
+<!-- Side Navigation Dots -->
+<div id="side-nav">
+  <div class="side-dot active" data-section="hero" title="Hero"></div>
+  <div class="side-dot" data-section="overview" title="Overview"></div>
+  <div class="side-dot" data-section="problem" title="Problem"></div>
+  <div class="side-dot" data-section="users" title="Users"></div>
+  <div class="side-dot" data-section="web" title="Web Design"></div>
+  <div class="side-dot" data-section="mobile" title="Mobile"></div>
+  <div class="side-dot" data-section="farmer" title="Farmer Dashboard"></div>
+  <div class="side-dot" data-section="bi-dashboard" title="BI Dashboard"></div>
+  <div class="side-dot" data-section="system" title="Design System"></div>
+  <div class="side-dot" data-section="iteration" title="Iterations"></div>
+  <div class="side-dot" data-section="reflection" title="Reflection"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav>
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <span class="section-label" style="color:#8A9E8E">Soullylush</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#overview" class="body-sm hover:text-mint transition-colors duration-200 no-underline">Overview</a>
+      <a href="#problem" class="body-sm hover:text-mint transition-colors duration-200 no-underline">Problem</a>
+      <a href="#web" class="body-sm hover:text-mint transition-colors duration-200 no-underline">Web</a>
+      <a href="#mobile" class="body-sm hover:text-mint transition-colors duration-200 no-underline">Mobile</a>
+      <a href="#farmer" class="body-sm hover:text-mint transition-colors duration-200 no-underline">Farmer Dashboard</a>
+      <a href="#bi-dashboard" class="body-sm hover:text-mint transition-colors duration-200 no-underline">BI Dashboard</a>
+      <a href="#iteration" class="body-sm hover:text-mint transition-colors duration-200 no-underline">Iterations</a>
+      <a href="#reflection" class="body-sm hover:text-mint transition-colors duration-200 no-underline">Reflection</a>
+    </div>
+    <a href="https://behance.net/pako_prakash" target="_blank" class="cta-btn text-sm py-2 px-4">
+      Hire me ↗
+    </a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="hero" class="min-h-screen flex flex-col justify-end pb-24 px-6 md:px-16 pt-32 relative overflow-hidden">
+
+  <!-- Background large text -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ghost-num select-none pointer-events-none" style="opacity:0.4;white-space:nowrap">SOULLYLUSH</div>
+
+  <!-- Top metadata -->
+  <div class="relative z-10 mb-20 reveal">
+    <div class="flex flex-wrap gap-4 mb-8">
+      <span class="tag-green">D2C E-Commerce</span>
+      <span class="tag-green">Product Design</span>
+      <span class="tag-green">4-Platform Design System</span>
+      <span class="tag-gold">Solo Designer</span>
+      <span class="tag-gold">Case Study 2025</span>
+    </div>
+  </div>
+
+  <!-- Main title + platform showcase -->
+  <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+    <div class="lg:col-span-7 max-w-6xl">
+      <p class="section-label mb-6 reveal">01 - Portfolio Project</p>
+      <h1 class="display-xl text-cream mb-6 reveal delay-1">
+        Designing trust<br>
+        <em class="highlight" style="font-style:italic">from farm</em><br>
+        to checkout
+      </h1>
+      <div class="max-w-2xl reveal delay-2">
+        <p class="body-lg mt-6">
+          A comprehensive end-to-end product design for Soullylush - India's organic D2C health & wellness brand. As sole designer on the project, I built one design system across four platforms: the web storefront, the native mobile app, a Farmer Operations dashboard, and an in-progress BI dashboard for business managers. This case study documents the full design rationale: every decision, every tradeoff, every iteration.
+        </p>
+      </div>
+    </div>
+
+    <!-- Platform showcase: web, mobile, farmer dashboard, one system -->
+    <div class="lg:col-span-5 reveal delay-2">
+      <div class="hero-frame-stack shimmer">
+        <div class="hero-mini-frame hero-frame-web">
+          <div class="mini-bar">
+            <div class="mini-dot" style="background:#FF5F57"></div>
+            <div class="mini-dot" style="background:#FEBC2E"></div>
+            <div class="mini-dot" style="background:#28C840"></div>
+            <span class="mini-label">soullylush.com</span>
+          </div>
+          <div style="background:linear-gradient(135deg,#1a3a22,#0d2015);padding:16px 14px">
+            <div style="font-size:12px;color:#95D5B2;font-weight:700;line-height:1.2">Supercharge Your</div>
+            <div style="font-size:16px;color:#F0E8D5;font-weight:700;font-style:italic;margin-bottom:8px">Health &amp; Wealth</div>
+            <div style="background:#D4622A;color:#fff;font-size:10px;padding:5px 12px;border-radius:2px;display:inline-block">SHOP NOW</div>
+          </div>
+        </div>
+        <div class="hero-mini-frame hero-frame-farmer">
+          <div class="mini-bar">
+            <span class="mini-label" style="color:#95D5B2">🌱 Soullyland / Overview</span>
+          </div>
+          <div style="background:#0d1c11;padding:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <div class="dash-stat"><div class="dash-stat-label">Crop Health</div><div class="dash-stat-value" style="color:#95D5B2">94%</div></div>
+            <div class="dash-stat"><div class="dash-stat-label">Moisture</div><div class="dash-stat-value" style="color:#E8835A">21.4%</div></div>
+            <div class="dash-stat"><div class="dash-stat-label">Alerts</div><div class="dash-stat-value" style="color:#E8835A">2</div></div>
+          </div>
+        </div>
+        <div class="hero-mini-frame hero-frame-mobile">
+          <div class="mini-bar" style="justify-content:center">
+            <span class="mini-label">App</span>
+          </div>
+          <div style="background:linear-gradient(135deg,#1a3a22,#0d2015);padding:10px 8px">
+            <div style="font-size:10px;color:#95D5B2;font-weight:600;margin-bottom:6px">Home</div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:6px;height:40px;margin-bottom:6px"></div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:6px;height:40px"></div>
+          </div>
+        </div>
+      </div>
+      <p class="body-sm text-center mt-4" style="color:#8A9E8E">One design system, three very different platforms</p>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="relative z-10 mt-16 reveal delay-3">
+    <div class="rule mb-8"></div>
+    <div class="flex flex-wrap gap-12">
+      <div>
+        <div class="section-label mb-1">Role</div>
+        <div class="body-md text-cream font-medium">Sole UI/UX Designer</div>
+      </div>
+      <div>
+        <div class="section-label mb-1">Platform</div>
+        <div class="body-md text-cream font-medium">Web · iOS/Android · Farmer Dashboard · BI Dashboard</div>
+      </div>
+      <div>
+        <div class="section-label mb-1">Screens</div>
+        <div class="body-md text-cream font-medium">7 Core Flows + 2 Dashboards</div>
+      </div>
+      <div>
+        <div class="section-label mb-1">Category</div>
+        <div class="body-md text-cream font-medium">D2C + Agri-Ops + Enterprise BI</div>
+      </div>
+      <div>
+        <div class="section-label mb-1">Year</div>
+        <div class="body-md text-cream font-medium">2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 right-10 reveal delay-4">
+    <div class="flex flex-col items-center gap-2">
+      <span class="section-label" style="writing-mode:vertical-rl;letter-spacing:0.3em">Scroll to explore</span>
+      <div style="width:1px;height:60px;background:linear-gradient(to bottom,#52B788,transparent)"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     OVERVIEW
+═══════════════════════════════════════════ -->
+<section id="overview" class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+  <div class="rule-gold mb-20"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+    <div>
+      <p class="section-label mb-6 reveal">02 - Overview</p>
+      <h2 class="display-lg text-cream reveal delay-1">
+        What is<br><em class="highlight">Soullylush?</em>
+      </h2>
+      <div class="mt-8 space-y-5">
+        <p class="body-lg reveal delay-2">
+          Soullylush is a farm-to-home organic brand selling protein shakes, diapers, gummy vitamins, snacks, and skin care - certified by NPOP, FSSAI, ECOCERT, and Earth Seer.
+        </p>
+        <p class="body-md reveal delay-3">
+          The design challenge: make organic grocery feel as intuitive and emotionally resonant as walking into a trusted neighbourhood store - while one design system flexes across four completely different interaction paradigms: impulse-driven D2C shopping, native mobile commerce, field-operations monitoring for farmers, and executive decision-making for business managers.
+        </p>
+        <p class="body-md reveal delay-3">
+          I designed and built all four platforms solo - same colour system, same typography roles, same component logic - adapted to radically different users and stakes each time.
+        </p>
+      </div>
+
+      <div class="mt-12 callout-block reveal delay-3">
+        <p class="section-label mb-3">Design Mandate</p>
+        <p class="body-lg text-cream italic" style="font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.4">
+          "Organic grocery shoppers are high-trust, low-impulse buyers. Every design decision must reduce anxiety and build confidence - not just look good."
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal-right delay-2">
+      <!-- Brand pillars cards -->
+      <div class="space-y-3">
+        <div class="card p-5 flex items-start gap-4">
+          <div style="width:32px;height:32px;background:rgba(82,183,136,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:#52B788;font-size:14px">✦</span>
+          </div>
+          <div>
+            <div class="body-md text-cream font-medium mb-1">Authentic & Organic</div>
+            <div class="body-sm">Products sourced from certified farms. No artificial additives. Transparent from soil to shelf.</div>
+          </div>
+        </div>
+        <div class="card p-5 flex items-start gap-4">
+          <div style="width:32px;height:32px;background:rgba(82,183,136,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:#52B788;font-size:14px">✦</span>
+          </div>
+          <div>
+            <div class="body-md text-cream font-medium mb-1">Sustainably Grown</div>
+            <div class="body-sm">Eco-friendly cultivation, biodiversity preservation, farmer-first supply chain.</div>
+          </div>
+        </div>
+        <div class="card p-5 flex items-start gap-4">
+          <div style="width:32px;height:32px;background:rgba(212,98,42,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:#D4622A;font-size:14px">✦</span>
+          </div>
+          <div>
+            <div class="body-md text-cream font-medium mb-1">Committed to Wellness</div>
+            <div class="body-sm">Every SKU curated to actively support the customer's health and lifestyle - not just sell product.</div>
+          </div>
+        </div>
+        <div class="card p-5 flex items-start gap-4">
+          <div style="width:32px;height:32px;background:rgba(201,169,110,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:#C9A96E;font-size:14px">✦</span>
+          </div>
+          <div>
+            <div class="body-md text-cream font-medium mb-1">Fairly Priced</div>
+            <div class="body-sm">Premium organic shouldn't be inaccessible. Best quality at harvest prices, always.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Metrics row -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-24">
+    <div class="metric-card reveal">
+      <div class="display-md highlight">7</div>
+      <div class="body-sm mt-2">Core Screens Designed</div>
+    </div>
+    <div class="metric-card reveal delay-1 shimmer">
+      <div class="display-md highlight">4</div>
+      <div class="body-sm mt-2">Platforms · 1 Design System</div>
+    </div>
+    <div class="metric-card reveal delay-2">
+      <div class="display-md highlight">6+</div>
+      <div class="body-sm mt-2">Product Categories</div>
+    </div>
+    <div class="metric-card reveal delay-3">
+      <div class="display-md highlight-gold">D2C</div>
+      <div class="body-sm mt-2">Business Model</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PROBLEM
+═══════════════════════════════════════════ -->
+<section id="problem" class="py-32 px-6 md:px-16 relative overflow-hidden">
+  <div class="ghost-num absolute -right-10 top-10 pointer-events-none" style="opacity:0.15">03</div>
+
+  <div class="max-w-7xl mx-auto">
+    <div class="rule-gold mb-20"></div>
+
+    <p class="section-label mb-6 reveal">03 - Problem Statement</p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-7">
+        <h2 class="display-lg text-cream reveal delay-1">
+          The trust-discovery<br>gap in organic<br><em class="highlight">D2C commerce</em>
+        </h2>
+        <div class="mt-10 space-y-8">
+          <p class="body-lg reveal delay-2">
+            India's organic grocery market is growing rapidly, but faces a persistent credibility problem. Customers are willing to pay a premium - but they drop off at two critical moments.
+          </p>
+
+          <!-- Two tension points -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal delay-3">
+            <div class="p-6" style="background:rgba(212,98,42,0.06);border:1px solid rgba(212,98,42,0.2);border-radius:2px">
+              <div class="tag-ember mb-4">Awareness Drop</div>
+              <p class="body-md mt-3">"Is this brand actually organic - or just marketing?" Users leave before they reach certifications buried at the bottom of the page.</p>
+            </div>
+            <div class="p-6" style="background:rgba(82,183,136,0.06);border:1px solid rgba(82,183,136,0.15);border-radius:2px">
+              <div class="tag-green mb-4">Conversion Drop</div>
+              <p class="body-md mt-3">"Can I find what I need quickly and trust this checkout?" Ambiguous UX patterns in cart and checkout lose buyers at the final step.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 reveal-right delay-2">
+        <div class="space-y-4">
+          <div class="section-label mb-4">Three Core Design Challenges</div>
+          <div class="p-6 card">
+            <div class="flex items-start gap-4">
+              <span class="section-label" style="color:#52B788;font-size:20px;line-height:1">01</span>
+              <div>
+                <div class="body-md text-cream font-medium mb-2">Trust-building at scale</div>
+                <div class="body-sm">Communicating authenticity and certifications without overwhelming visual hierarchy or burying them below the fold.</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 card">
+            <div class="flex items-start gap-4">
+              <span class="section-label" style="color:#C9A96E;font-size:20px;line-height:1">02</span>
+              <div>
+                <div class="body-md text-cream font-medium mb-2">Multi-platform cohesion</div>
+                <div class="body-sm">Delivering a seamless brand experience across a full-width web storefront and a compact mobile app - two fundamentally different interaction paradigms.</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 card">
+            <div class="flex items-start gap-4">
+              <span class="section-label" style="color:#D4622A;font-size:20px;line-height:1">03</span>
+              <div>
+                <div class="body-md text-cream font-medium mb-2">Conversion optimisation</div>
+                <div class="body-sm">Guiding users from product discovery to checkout with minimal friction, in a category where impulse purchase is low and consideration is high.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     USERS
+═══════════════════════════════════════════ -->
+<section id="users" class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+  <div class="rule-gold mb-20"></div>
+
+  <p class="section-label mb-6 reveal">04 - Target Users</p>
+  <h2 class="display-lg text-cream mb-4 reveal delay-1">
+    Three buyers.<br><em class="highlight">One platform.</em>
+  </h2>
+  <p class="body-lg max-w-2xl mb-16 reveal delay-2">Every screen decision was validated against these three distinct mental models. A senior designer doesn't design for an average user - they design for the spectrum.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Persona 1 -->
+    <div class="card p-8 reveal">
+      <div class="flex items-center justify-between mb-6">
+        <div style="width:48px;height:48px;background:rgba(82,183,136,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:22px">👩‍👧</span>
+        </div>
+        <span class="tag-green">Mobile 70%</span>
+      </div>
+      <div class="display-md text-cream mb-2" style="font-size:22px">Health-Conscious<br>Urban Parent</div>
+      <div class="body-sm mb-6" style="color:#52B788">Age 28–40 · Metro cities</div>
+      <div class="rule mb-6"></div>
+      <div class="space-y-3">
+        <div>
+          <div class="section-label mb-1">Needs</div>
+          <div class="body-sm">Certified organic baby care, protein supplements, clean-label snacks</div>
+        </div>
+        <div>
+          <div class="section-label mb-1">Pain Point</div>
+          <div class="body-sm">Distrust of 'organic' claims without visible third-party proof</div>
+        </div>
+        <div class="mt-4">
+          <div class="section-label mb-2">Design Response</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag-green" style="font-size:9px">Certs on homepage</span>
+            <span class="tag-green" style="font-size:9px">Reorder tab</span>
+            <span class="tag-green" style="font-size:9px">Subscribe & Save</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persona 2 -->
+    <div class="card p-8 reveal delay-1">
+      <div class="flex items-center justify-between mb-6">
+        <div style="width:48px;height:48px;background:rgba(201,169,110,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:22px">🏃</span>
+        </div>
+        <span class="tag-gold">Mobile 85%</span>
+      </div>
+      <div class="display-md text-cream mb-2" style="font-size:22px">The Wellness<br>Enthusiast</div>
+      <div class="body-sm mb-6" style="color:#C9A96E">Age 22–35 · Urban, educated</div>
+      <div class="rule mb-6"></div>
+      <div class="space-y-3">
+        <div>
+          <div class="section-label mb-1">Needs</div>
+          <div class="body-sm">Protein shakes, gummy vitamins, skin care - with ingredient transparency</div>
+        </div>
+        <div>
+          <div class="section-label mb-1">Pain Point</div>
+          <div class="body-sm">Analysis paralysis from product overload; unclear size/variant selection</div>
+        </div>
+        <div class="mt-4">
+          <div class="section-label mb-2">Design Response</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag-gold" style="font-size:9px">Size selector</span>
+            <span class="tag-gold" style="font-size:9px">Ingredient accordion</span>
+            <span class="tag-gold" style="font-size:9px">Most Loved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persona 3 -->
+    <div class="card p-8 reveal delay-2">
+      <div class="flex items-center justify-between mb-6">
+        <div style="width:48px;height:48px;background:rgba(212,98,42,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:22px">🏠</span>
+        </div>
+        <span class="tag-ember">Web 55%</span>
+      </div>
+      <div class="display-md text-cream mb-2" style="font-size:22px">Organic Household<br>Manager</div>
+      <div class="body-sm mb-6" style="color:#E8835A">Age 30–50 · Suburban family</div>
+      <div class="rule mb-6"></div>
+      <div class="space-y-3">
+        <div>
+          <div class="section-label mb-1">Needs</div>
+          <div class="body-sm">Farm fresh, dairy, and staples in bulk; recurring orders; nearby store discovery</div>
+        </div>
+        <div>
+          <div class="section-label mb-1">Pain Point</div>
+          <div class="body-sm">Wants quick category browsing, not editorial scrolling. Frustrated by depth before product</div>
+        </div>
+        <div class="mt-4">
+          <div class="section-label mb-2">Design Response</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag-ember" style="font-size:9px">Category pills</span>
+            <span class="tag-ember" style="font-size:9px">Nearby Stores</span>
+            <span class="tag-ember" style="font-size:9px">Cart merge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WEB DESIGN
+═══════════════════════════════════════════ -->
+<section id="web" class="py-32 px-6 md:px-16 relative overflow-hidden">
+  <div class="ghost-num absolute -left-10 top-20 pointer-events-none" style="opacity:0.12">WEB</div>
+  <div class="max-w-7xl mx-auto">
+    <div class="rule-gold mb-20"></div>
+
+    <p class="section-label mb-6 reveal">05 - Web Platform</p>
+    <h2 class="display-lg text-cream mb-4 reveal delay-1">
+      The homepage is a<br><em class="highlight">full-funnel page.</em>
+    </h2>
+    <p class="body-lg max-w-2xl mb-20 reveal delay-2">The web experience isn't just responsive mobile - it's purpose-built for discovery, brand storytelling, and SEO. Every section has a conversion role.</p>
+
+    <!-- Web screen analysis cards -->
+    <div class="space-y-8">
+
+      <!-- Hero Section Analysis -->
+      <div class="card p-8 md:p-10 reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5">
+            <!-- CSS mockup of web hero -->
+            <div class="browser-frame">
+              <div class="browser-bar">
+                <div class="browser-dot" style="background:#FF5F57"></div>
+                <div class="browser-dot" style="background:#FEBC2E"></div>
+                <div class="browser-dot" style="background:#28C840"></div>
+                <div style="flex:1;margin-left:12px;background:rgba(255,255,255,0.06);border-radius:3px;height:20px;padding:0 10px;display:flex;align-items:center">
+                  <span style="font-size:8px;color:#8A9E8E">soullylush.com</span>
+                </div>
+              </div>
+              <div class="ui-nav">
+                <div class="ui-nav-dot"></div>
+                <div class="ui-nav-dot"></div>
+                <div class="ui-nav-dot"></div>
+                <div class="ui-nav-dot"></div>
+              </div>
+              <div class="ui-hero" style="min-height:120px;position:relative;overflow:hidden">
+                <div style="position:absolute;right:10px;top:10px;width:80px;height:80px;background:rgba(82,183,136,0.15);border-radius:50%"></div>
+                <div style="margin-bottom:6px">
+                  <span style="font-size:9px;color:#95D5B2;font-weight:700;display:block;line-height:1.2">Supercharge Your</span>
+                  <span style="font-size:14px;color:#F0E8D5;font-weight:700;display:block;font-style:italic;line-height:1.1">Health & Wealth</span>
+                </div>
+                <div style="background:#D4622A;color:#fff;font-size:7px;padding:4px 10px;border-radius:2px;display:inline-block;margin-top:4px">SHOP NOW</div>
+                <div style="position:absolute;right:16px;bottom:8px;display:flex;gap:4px">
+                  <div style="width:20px;height:28px;background:rgba(82,183,136,0.2);border-radius:4px"></div>
+                  <div style="width:20px;height:28px;background:rgba(82,183,136,0.3);border-radius:4px"></div>
+                  <div style="width:20px;height:28px;background:rgba(82,183,136,0.2);border-radius:4px"></div>
+                </div>
+              </div>
+              <div style="background:#f5faf6;padding:10px 12px">
+                <div style="font-size:7px;color:#2D6A4F;font-weight:600;margin-bottom:6px">Shop by Category</div>
+                <div style="display:flex;gap:6px">
+                  <div style="text-align:center">
+                    <div style="width:28px;height:28px;background:rgba(45,106,79,0.1);border-radius:50%;margin:0 auto 3px"></div>
+                    <div style="font-size:6px;color:#444">All</div>
+                  </div>
+                  <div style="text-align:center">
+                    <div style="width:28px;height:28px;background:rgba(45,106,79,0.1);border-radius:50%;margin:0 auto 3px"></div>
+                    <div style="font-size:6px;color:#444">Farm</div>
+                  </div>
+                  <div style="text-align:center">
+                    <div style="width:28px;height:28px;background:rgba(45,106,79,0.1);border-radius:50%;margin:0 auto 3px"></div>
+                    <div style="font-size:6px;color:#444">Dairy</div>
+                  </div>
+                  <div style="text-align:center">
+                    <div style="width:28px;height:28px;background:rgba(45,106,79,0.1);border-radius:50%;margin:0 auto 3px"></div>
+                    <div style="font-size:6px;color:#444">Beverages</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="section-label">Hero Section</div>
+              <span class="tag-green">Works well</span>
+              <span class="tag-ember">+ Iteration</span>
+            </div>
+            <h3 class="display-md text-cream mb-5" style="font-size:26px">"Supercharge Your Health & Wealth" - a dual value proposition</h3>
+            <p class="body-md mb-6">The hero combines personal wellbeing and financial wisdom. Mixed-weight display type creates visual impact. The wooden base in the product imagery communicates naturalism without being sterile.</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span style="color:#52B788;margin-top:3px">✓</span>
+                <div class="body-md"><strong class="text-cream">Strong CTA contrast:</strong> 'SHOP NOW' in dark red against green creates immediate visual pull. Product variety shown in one viewport.</div>
+              </div>
+              <div class="flex items-start gap-3 p-4" style="background:rgba(212,98,42,0.06);border:1px solid rgba(212,98,42,0.2);border-radius:2px">
+                <span style="color:#D4622A;margin-top:3px">→</span>
+                <div class="body-md"><strong style="color:#D4B87A">Planned for next revision:</strong> Showing 6–8 products simultaneously dilutes focus. A single hero product with a benefit-led headline - "India's first protein shake with zero artificial colours" - is queued for A/B testing. This direction will be finalised based on the analytics report once live user data comes in, not decided on instinct alone.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications Analysis -->
+      <div class="card p-8 md:p-10 reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="section-label">Trust & Certifications</div>
+              <span class="tag-gold">Deliberate Tradeoff</span>
+            </div>
+            <h3 class="display-md text-cream mb-5" style="font-size:26px">NPOP · ECOCERT · Earth Seer · FSSAI - placed below the hero banner, by design</h3>
+            <p class="body-md mb-6">Four world-class certifications, positioned right after the hero section rather than above the fold. This was a deliberate flow decision: let the value proposition and product range land first, then earn trust with credentials once the visitor is already engaged - not before they know what the brand is.</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span style="color:#52B788;margin-top:3px">✓</span>
+                <div class="body-md"><strong class="text-cream">Clean grid layout,</strong> official logos reproduced clearly, brief sub-copy explains what each certification means to real buyers.</div>
+              </div>
+              <div class="tradeoff-block">
+                <div class="tradeoff-label">⚖ Tradeoff</div>
+                <div class="body-md">Placing certifications this early costs some "hero-only" visual purity, but buys immediate credibility for first-time visitors who don't yet trust an organic D2C brand by name alone. This placement isn't final - it's planned for next revision and will be finalised based on the analytics report once real scroll-depth and conversion data come in.</div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <!-- Cert mockup comparison -->
+            <div class="space-y-3">
+              <div class="section-label mb-3">Current placement - below hero</div>
+              <div style="height:80px;background:rgba(201,169,110,0.06);border:1px dashed rgba(201,169,110,0.3);border-radius:2px;display:flex;align-items:center;justify-content:center">
+                <span style="font-size:14px;color:#D4B87A;text-align:center">Trust signals shown right after<br>the value proposition lands</span>
+              </div>
+              <div class="section-label mb-3 mt-6">Being tested for next revision</div>
+              <div style="background:rgba(82,183,136,0.06);border:1px solid rgba(82,183,136,0.2);border-radius:2px;padding:12px">
+                <div style="background:rgba(45,106,79,0.3);padding:6px 12px;border-radius:2px;margin-bottom:8px">
+                  <span style="font-size:14px;color:#F0E8D5;font-weight:600">Hero CTA → SHOP NOW</span>
+                </div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                  <span style="font-size:14px;color:#95D5B2;background:rgba(82,183,136,0.1);padding:3px 8px;border-radius:2px;border:1px solid rgba(82,183,136,0.2)">✓ NPOP</span>
+                  <span style="font-size:14px;color:#95D5B2;background:rgba(82,183,136,0.1);padding:3px 8px;border-radius:2px;border:1px solid rgba(82,183,136,0.2)">✓ FSSAI</span>
+                  <span style="font-size:14px;color:#95D5B2;background:rgba(82,183,136,0.1);padding:3px 8px;border-radius:2px;border:1px solid rgba(82,183,136,0.2)">✓ ECOCERT</span>
+                  <span style="font-size:14px;color:#95D5B2;background:rgba(82,183,136,0.1);padding:3px 8px;border-radius:2px;border:1px solid rgba(82,183,136,0.2)">✓ Earth Seer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Most Loved Analysis -->
+      <div class="card p-8 md:p-10 reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="section-label">Most Loved Section</div>
+              <span class="tag-green">Strong pattern</span>
+            </div>
+            <h3 class="display-md text-cream mb-5" style="font-size:26px">Editorial curation solves the organic trust problem through social proof</h3>
+            <p class="body-md mb-6">Labelling products 'Featured', 'Best Seller', and 'New Arrival' creates editorial authority without overwhelming the user with rating numbers - a subtle but effective trust pattern.</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <div class="section-label mb-3">What works</div>
+                <div class="space-y-2">
+                  <div class="flex items-start gap-2"><span style="color:#52B788;font-size:10px;margin-top:3px">✓</span><div class="body-sm">Clean product card: name / descriptor / price badge / wishlist / CTA in one unit</div></div>
+                  <div class="flex items-start gap-2"><span style="color:#52B788;font-size:10px;margin-top:3px">✓</span><div class="body-sm">In-tab filtering without page navigation</div></div>
+                  <div class="flex items-start gap-2"><span style="color:#52B788;font-size:10px;margin-top:3px">✓</span><div class="body-sm">Contextual product photography on soft backgrounds</div></div>
+                </div>
+              </div>
+              <div>
+                <div class="section-label mb-3">Planned Next Revision</div>
+                <div class="space-y-2">
+                  <div class="flex items-start gap-2"><span style="color:#D4B87A;font-size:10px;margin-top:3px">→</span><div class="body-sm">Testing 'Add to Cart' directly on listing cards, since 'View Details' costs one extra tap for decisive buyers</div></div>
+                  <div class="flex items-start gap-2"><span style="color:#D4B87A;font-size:10px;margin-top:3px">→</span><div class="body-sm">Testing consistent price display on every card - currently missing on some</div></div>
+                </div>
+                <p class="body-sm mt-3" style="color:#8A9E8E">Neither change ships until it's validated against the analytics report.</p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <!-- Product card mockups -->
+            <div class="grid grid-cols-2 gap-3">
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;overflow:hidden">
+                <div style="height:80px;background:linear-gradient(135deg,#1a3a22,#0d2015);position:relative;display:flex;align-items:center;justify-content:center">
+                  <div style="width:50px;height:50px;background:rgba(82,183,136,0.2);border-radius:8px"></div>
+                  <div style="position:absolute;top:6px;left:6px;background:rgba(82,183,136,0.8);font-size:6px;color:#fff;padding:2px 5px;border-radius:2px">Best Seller</div>
+                </div>
+                <div style="padding:8px">
+                  <div style="font-size:8px;color:#F0E8D5;font-weight:600;margin-bottom:2px">Soully Crunch</div>
+                  <div style="font-size:7px;color:#8A9E8E;margin-bottom:5px">Gluten Free · No Added Color</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:9px;color:#52B788;font-weight:700">₹400</span>
+                    <div style="background:#2D6A4F;font-size:6px;color:#fff;padding:2px 6px;border-radius:2px">+ Cart</div>
+                  </div>
+                </div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;overflow:hidden">
+                <div style="height:80px;background:linear-gradient(135deg,#2a1a0e,#1a1010);position:relative;display:flex;align-items:center;justify-content:center">
+                  <div style="width:50px;height:50px;background:rgba(212,98,42,0.2);border-radius:8px"></div>
+                  <div style="position:absolute;top:6px;left:6px;background:rgba(212,98,42,0.8);font-size:6px;color:#fff;padding:2px 5px;border-radius:2px">New Arrival</div>
+                </div>
+                <div style="padding:8px">
+                  <div style="font-size:8px;color:#F0E8D5;font-weight:600;margin-bottom:2px">Slime Hale Shake</div>
+                  <div style="font-size:7px;color:#8A9E8E;margin-bottom:5px">Organic Protein · 30g</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:9px;color:#52B788;font-weight:700">₹799</span>
+                    <div style="background:#2D6A4F;font-size:6px;color:#fff;padding:2px 6px;border-radius:2px">+ Cart</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scope & Client Tradeoffs -->
+      <div class="card p-8 md:p-10 reveal shimmer">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="section-label">Scope Decisions</div>
+          <span class="tag-gold">Tradeoffs</span>
+        </div>
+        <h3 class="display-md text-cream mb-8" style="font-size:26px">What didn't make the page - and why</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="tradeoff-block">
+            <div class="tradeoff-label">⚖ About Us</div>
+            <div class="body-md">Removed from the landing page entirely, rather than unfolding into a testimonial-driven brand story. This was the client's call - they wanted the homepage to stay focused on product and conversion rather than stretch scroll depth with narrative content.</div>
+          </div>
+          <div class="tradeoff-block">
+            <div class="tradeoff-label">⚖ Micro-interactions</div>
+            <div class="body-md">Kept deliberately limited, scoped down against developer implementation cost. Interaction depth was concentrated on two sections - About Us and Certifications - using animation that can be built with CSS alone, rather than spreading thin, harder-to-justify motion across the whole page.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     MOBILE APP
+═══════════════════════════════════════════ -->
+<section id="mobile" class="py-32 px-6 md:px-16 relative overflow-hidden">
+  <div class="ghost-num absolute -right-10 bottom-20 pointer-events-none" style="opacity:0.12">APP</div>
+  <div class="max-w-7xl mx-auto">
+    <div class="rule-gold mb-20"></div>
+
+    <p class="section-label mb-6 reveal">06 - Mobile Application</p>
+    <h2 class="display-lg text-cream mb-4 reveal delay-1">
+      Mobile designed for<br><em class="highlight">task completion,</em><br>not storytelling.
+    </h2>
+    <p class="body-lg max-w-2xl mb-20 reveal delay-2">The app assumes higher baseline intent. The user has already downloaded it - they want to find, decide, and buy. Every interaction should feel purposeful and quick.</p>
+
+    <!-- Mobile screens grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Home Screen -->
+      <div class="reveal">
+        <div class="phone-frame mx-auto" style="max-width:240px">
+          <div class="phone-notch"></div>
+          <!-- Status bar -->
+          <div style="height:28px;background:#080F0A;display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+            <span style="font-size:7px;color:#8A9E8E">Chennai GPO · 600001</span>
+            <span style="font-size:7px;color:#8A9E8E">9:41</span>
+          </div>
+          <!-- Search -->
+          <div style="background:#0D1C11;padding:8px 12px">
+            <div style="background:rgba(255,255,255,0.06);border-radius:20px;padding:6px 12px;display:flex;align-items:center;gap:6px">
+              <span style="font-size:9px;color:#52B788">⌕</span>
+              <span style="font-size:8px;color:#8A9E8E">Search for Fruits</span>
+            </div>
+          </div>
+          <!-- Banner -->
+          <div style="margin:0 12px 10px;background:linear-gradient(135deg,#1E3D27,#0D2015);border-radius:8px;padding:14px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:-10px;top:-10px;width:60px;height:60px;background:rgba(82,183,136,0.1);border-radius:50%"></div>
+            <div style="font-size:9px;color:#52B788;margin-bottom:3px">Featured</div>
+            <div style="font-size:11px;color:#F0E8D5;font-weight:600;line-height:1.2">Freshness Delivered<br>Farm to Fresh</div>
+            <div style="background:#D4622A;color:#fff;font-size:7px;padding:3px 8px;border-radius:3px;display:inline-block;margin-top:6px">Shop Now</div>
+          </div>
+          <!-- Categories -->
+          <div style="padding:0 12px 10px">
+            <div style="font-size:8px;color:#F0E8D5;font-weight:600;margin-bottom:6px">Category</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <div style="text-align:center"><div style="width:32px;height:32px;background:rgba(82,183,136,0.12);border-radius:50%;border:1px solid rgba(82,183,136,0.2);margin:0 auto 3px"></div><div style="font-size:6px;color:#8A9E8E">All</div></div>
+              <div style="text-align:center"><div style="width:32px;height:32px;background:rgba(82,183,136,0.12);border-radius:50%;border:1px solid rgba(82,183,136,0.2);margin:0 auto 3px"></div><div style="font-size:6px;color:#8A9E8E">Farm</div></div>
+              <div style="text-align:center"><div style="width:32px;height:32px;background:rgba(82,183,136,0.12);border-radius:50%;border:1px solid rgba(82,183,136,0.2);margin:0 auto 3px"></div><div style="font-size:6px;color:#8A9E8E">Skin</div></div>
+              <div style="text-align:center"><div style="width:32px;height:32px;background:rgba(82,183,136,0.12);border-radius:50%;border:1px solid rgba(82,183,136,0.2);margin:0 auto 3px"></div><div style="font-size:6px;color:#8A9E8E">Dairy</div></div>
+            </div>
+          </div>
+          <!-- Products -->
+          <div style="padding:0 12px">
+            <div style="font-size:8px;color:#F0E8D5;font-weight:600;margin-bottom:6px">Most loved</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:6px;overflow:hidden">
+                <div style="height:50px;background:linear-gradient(135deg,#1a3a22,#0d1a0f);display:flex;align-items:center;justify-content:center;position:relative">
+                  <div style="width:30px;height:30px;background:rgba(82,183,136,0.2);border-radius:4px"></div>
+                  <div style="position:absolute;top:3px;left:3px;background:rgba(82,183,136,0.7);font-size:5px;color:#fff;padding:1px 4px;border-radius:2px">Nature</div>
+                </div>
+                <div style="padding:5px">
+                  <div style="font-size:7px;color:#F0E8D5;font-weight:600">Gummy Vitamins</div>
+                  <div style="font-size:6px;color:#8A9E8E">₹299/box</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px">
+                    <span style="font-size:6px;color:#C9A96E">★ 4.8</span>
+                    <div style="background:#2D6A4F;font-size:5px;color:#fff;padding:2px 5px;border-radius:2px">+ cart</div>
+                  </div>
+                </div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:6px;overflow:hidden">
+                <div style="height:50px;background:linear-gradient(135deg,#2a1a0e,#1a1010);display:flex;align-items:center;justify-content:center;position:relative">
+                  <div style="width:30px;height:30px;background:rgba(212,98,42,0.2);border-radius:4px"></div>
+                  <div style="position:absolute;top:3px;left:3px;background:rgba(212,98,42,0.7);font-size:5px;color:#fff;padding:1px 4px;border-radius:2px">Health</div>
+                </div>
+                <div style="padding:5px">
+                  <div style="font-size:7px;color:#F0E8D5;font-weight:600">Slime Hale</div>
+                  <div style="font-size:6px;color:#8A9E8E">₹299/250ml</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px">
+                    <span style="font-size:6px;color:#C9A96E">★ 4.8</span>
+                    <div style="background:#2D6A4F;font-size:5px;color:#fff;padding:2px 5px;border-radius:2px">+ cart</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom nav -->
+          <div style="background:#0D1C11;border-top:1px solid rgba(82,183,136,0.1);padding:8px 0;display:flex;justify-content:space-around;margin-top:10px">
+            <div style="text-align:center"><div style="font-size:12px">🏠</div><div style="font-size:6px;color:#52B788">Home</div></div>
+            <div style="text-align:center"><div style="font-size:12px">⊞</div><div style="font-size:6px;color:#8A9E8E">Explore</div></div>
+            <div style="text-align:center"><div style="width:28px;height:28px;background:#D4622A;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto -6px"><span style="font-size:10px">≋</span></div></div>
+            <div style="text-align:center"><div style="font-size:12px">↺</div><div style="font-size:6px;color:#8A9E8E">Reorder</div></div>
+            <div style="text-align:center"><div style="font-size:12px">🛒</div><div style="font-size:6px;color:#8A9E8E">Cart</div></div>
+          </div>
+        </div>
+        <div class="mt-6 text-center">
+          <div class="section-label mb-2">Home Screen</div>
+          <p class="body-sm max-w-xs mx-auto">Location context at top → Reorder tab in nav → attribute chips on cards. D2C retention patterns baked into the base navigation.</p>
+        </div>
+      </div>
+
+      <!-- PDP Screen -->
+      <div class="reveal delay-1">
+        <div class="phone-frame mx-auto" style="max-width:240px">
+          <div class="phone-notch"></div>
+          <div style="height:28px;background:#080F0A;display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+            <span style="font-size:9px;color:#52B788">← Product details</span>
+            <span style="font-size:9px;color:#8A9E8E">🛒</span>
+          </div>
+          <!-- Product image -->
+          <div style="background:linear-gradient(135deg,#1a2e1a,#0d1810);height:90px;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 12px">
+            <div style="flex:1;height:70px;background:rgba(82,183,136,0.15);border-radius:6px"></div>
+            <div style="flex:1;height:70px;background:rgba(82,183,136,0.2);border-radius:6px"></div>
+            <div style="flex:1;height:70px;background:rgba(82,183,136,0.15);border-radius:6px"></div>
+          </div>
+          <!-- Flavour thumbnails -->
+          <div style="padding:6px 12px;display:flex;gap:4px">
+            <div style="width:16px;height:16px;border-radius:50%;background:rgba(82,183,136,0.3);border:1px solid rgba(82,183,136,0.4)"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:rgba(212,98,42,0.3)"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:rgba(201,169,110,0.3)"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:rgba(149,213,178,0.3)"></div>
+          </div>
+          <!-- Product info -->
+          <div style="padding:0 12px">
+            <div style="font-size:7px;color:#52B788;margin-bottom:2px">SOULLYLUSH · SLIME HALE</div>
+            <div style="font-size:11px;color:#F0E8D5;font-weight:700;line-height:1.2;margin-bottom:4px">Organic Protein Shake</div>
+            <div style="display:flex;align-items:center;gap:4px;margin-bottom:6px">
+              <span style="font-size:7px;color:#C9A96E">★★★★★ 4.8</span>
+              <span style="font-size:6px;color:#8A9E8E">FSSAI Certified</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+              <span style="font-size:12px;color:#52B788;font-weight:700">₹599</span>
+              <span style="font-size:8px;color:#8A9E8E;text-decoration:line-through">₹799</span>
+              <span style="font-size:7px;color:#D4622A;background:rgba(212,98,42,0.12);padding:1px 4px;border-radius:2px">Save 20%</span>
+            </div>
+            <!-- Size selector -->
+            <div style="display:flex;gap:4px;margin-bottom:8px">
+              <div style="border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:3px 6px;font-size:6px;color:#8A9E8E">250ml</div>
+              <div style="border:1px solid #52B788;background:rgba(82,183,136,0.15);border-radius:3px;padding:3px 6px;font-size:6px;color:#95D5B2">500ml</div>
+              <div style="border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:3px 6px;font-size:6px;color:#8A9E8E">1L</div>
+            </div>
+            <!-- Subscribe toggle -->
+            <div style="background:rgba(82,183,136,0.08);border:1px solid rgba(82,183,136,0.2);border-radius:4px;padding:6px 8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:7px;color:#95D5B2">Subscribe & Save 10%</span>
+              <div style="width:20px;height:10px;background:#52B788;border-radius:5px"></div>
+            </div>
+            <!-- Trust badges -->
+            <div style="display:flex;gap:4px;margin-bottom:8px">
+              <div style="text-align:center;flex:1">
+                <div style="font-size:8px">⚡</div>
+                <div style="font-size:5px;color:#8A9E8E">Same Day</div>
+              </div>
+              <div style="text-align:center;flex:1">
+                <div style="font-size:8px">♻</div>
+                <div style="font-size:5px;color:#8A9E8E">Eco Packed</div>
+              </div>
+              <div style="text-align:center;flex:1">
+                <div style="font-size:8px">↩</div>
+                <div style="font-size:5px;color:#8A9E8E">Easy Returns</div>
+              </div>
+            </div>
+          </div>
+          <!-- Add to cart -->
+          <div style="margin:0 12px 12px;background:#2D6A4F;border-radius:6px;padding:8px;text-align:center;font-size:8px;color:#fff;font-weight:600">
+            🛒 Add to Cart - ₹599
+          </div>
+        </div>
+        <div class="mt-6 text-center">
+          <div class="section-label mb-2">Product Detail Page</div>
+          <p class="body-sm max-w-xs mx-auto">Variant selection + subscription toggle + trust badges + review distribution - all on one scroll. High density, zero clutter.</p>
+        </div>
+      </div>
+
+      <!-- Checkout Screen -->
+      <div class="reveal delay-2">
+        <div class="phone-frame mx-auto" style="max-width:240px">
+          <div class="phone-notch"></div>
+          <div style="height:28px;background:#080F0A;display:flex;align-items:center;padding:0 16px">
+            <span style="font-size:9px;color:#52B788">← Checkout</span>
+          </div>
+          <div style="padding:10px 12px;overflow:auto">
+            <!-- Address -->
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:8px;margin-bottom:6px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                <div style="font-size:7px;color:#8A9E8E">📍 Delivery Address</div>
+                <div style="background:rgba(82,183,136,0.15);font-size:6px;color:#95D5B2;padding:1px 6px;border-radius:10px">Home</div>
+              </div>
+              <div style="font-size:8px;color:#F0E8D5">216 St Paul's Rd, Chennai 600028</div>
+            </div>
+            <!-- Shipping -->
+            <div style="font-size:8px;color:#F0E8D5;font-weight:600;margin-bottom:6px">Shipping Duration</div>
+            <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:7px 8px;margin-bottom:4px;display:flex;justify-content:space-between">
+              <div>
+                <div style="font-size:7px;color:#F0E8D5">Standard · Free</div>
+              </div>
+              <div style="font-size:6px;color:#8A9E8E">2 hours</div>
+            </div>
+            <div style="background:rgba(82,183,136,0.06);border:1px solid rgba(82,183,136,0.2);border-radius:4px;padding:7px 8px;margin-bottom:8px;display:flex;justify-content:space-between">
+              <div>
+                <div style="font-size:7px;color:#95D5B2;font-weight:600">Priority · +₹20</div>
+              </div>
+              <div style="font-size:6px;color:#52B788">20–60 min</div>
+            </div>
+            <!-- Order summary -->
+            <div style="font-size:8px;color:#F0E8D5;font-weight:600;margin-bottom:6px">Order</div>
+            <div style="background:rgba(255,255,255,0.02);border-radius:4px;padding:7px 8px;margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:7px;color:#8A9E8E">Slime Hale × 2</span><span style="font-size:7px;color:#F0E8D5">₹318</span></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:7px;color:#8A9E8E">Gummy Vitamins × 1</span><span style="font-size:7px;color:#F0E8D5">₹299</span></div>
+            </div>
+            <!-- Cost breakdown -->
+            <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:6px;margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:7px;color:#8A9E8E">Subtotal</span><span style="font-size:7px;color:#F0E8D5">₹598</span></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:7px;color:#8A9E8E">Taxes</span><span style="font-size:7px;color:#F0E8D5">₹10</span></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:7px;color:#8A9E8E">Delivery</span><span style="font-size:7px;color:#F0E8D5">₹20</span></div>
+              <div style="display:flex;justify-content:space-between;padding-top:5px;border-top:1px solid rgba(255,255,255,0.06)">
+                <span style="font-size:8px;color:#F0E8D5;font-weight:600">Total</span>
+                <span style="font-size:9px;color:#52B788;font-weight:700">₹633</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin:0 12px 12px;background:#2D6A4F;border-radius:6px;padding:8px;text-align:center;font-size:8px;color:#fff;font-weight:600">
+            Proceed to Payment - ₹633
+          </div>
+        </div>
+        <div class="mt-6 text-center">
+          <div class="section-label mb-2">Checkout Screen</div>
+          <p class="body-sm max-w-xs mx-auto">Single-page checkout. Full cost transparency before payment. Shipping tier comparison as card selection.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile analysis points -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20">
+      <div class="card p-6 reveal">
+        <div class="tag-gold mb-4">Tradeoff</div>
+        <h4 class="body-md text-cream font-medium mb-3">5-tab bottom nav: two slots spent on retention, not discovery</h4>
+        <p class="body-sm mb-4">Reorder and Track sit at the navigation level instead of inside an account menu. The Reorder tab exists specifically so a user can repurchase last month's full grocery list - 35 items, unchanged - in one tap, rather than rebuilding it manually. Track was a direct user request: on the existing app they were used to, it was buried inside Profile, and they wanted it surfaced.</p>
+        <div class="tradeoff-block mb-4">
+          <div class="tradeoff-label">⚖ What this costs</div>
+          <div class="body-sm">Two of five nav slots go to repeat-purchase behaviour instead of, say, a dedicated Account or Wishlist tab - a deliberate bet that retention matters more than browsing convenience for this audience.</div>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <span class="tag-green">Home</span>
+          <span class="tag-green">Explore</span>
+          <span class="tag-gold">Track ★</span>
+          <span class="tag-gold">Reorder ★</span>
+          <span class="tag-green">Cart</span>
+        </div>
+      </div>
+      <div class="card p-6 reveal delay-1">
+        <div class="tag-gold mb-4">Tradeoff</div>
+        <h4 class="body-md text-cream font-medium mb-3">Checkbox cart: mapped to a physical habit, not a digital convention</h4>
+        <p class="body-sm mb-4">The cart uses a checkbox model, letting items be ticked on or off before checkout. This maps directly to how the target user already shops - ticking off items on a physical grocery list - rather than following the standard "everything in cart gets bought" e-commerce pattern.</p>
+        <div class="tradeoff-block">
+          <div class="tradeoff-label">⚖ What this costs</div>
+          <div class="body-md">Familiarity for users coming from other apps, who expect unchecked items to still be in the cart. Planned for next revision: persistent micro-copy - "Uncheck items to save for later" - to close that gap, to be finalised based on the analytics report once real usage patterns are in.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FARMER OPERATIONS DASHBOARD
+═══════════════════════════════════════════ -->
+<section id="farmer" class="py-32 px-6 md:px-16 relative overflow-hidden">
+  <div class="ghost-num absolute -right-10 top-10 pointer-events-none" style="opacity:0.12">B2B</div>
+  <div class="max-w-7xl mx-auto">
+    <div class="rule-gold mb-20"></div>
+
+    <p class="section-label mb-6 reveal">07 - Farmer Operations Dashboard</p>
+    <h2 class="display-lg text-cream mb-4 reveal delay-1">
+      Same system,<br><em class="highlight">opposite user.</em>
+    </h2>
+    <p class="body-lg max-w-2xl mb-6 reveal delay-2">Soullyland is a desktop dashboard for the farmers and field teams supplying Soullylush. Instead of driving an impulse purchase in eight seconds, it needs to hold a field manager's attention for an entire shift - surfacing risk, not merchandise.</p>
+    <p class="body-md max-w-2xl mb-20 reveal delay-2">Built as living teaching material for my students at Image Creative Education: two core screens are fully designed - <strong class="text-cream">Overview</strong> and <strong class="text-cream">Predictions</strong> - with Crop Health, Reports, and further flows planned as the next teaching modules, so learners can watch the system extend over time rather than see it finished.</p>
+
+    <!-- Overview screen -->
+    <div class="card p-8 md:p-10 reveal mb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6">
+          <div class="dash-frame shimmer">
+            <div class="dash-bar">
+              <span style="font-size:8px;color:#95D5B2;font-weight:700">🌱 Soullyland / Overview</span>
+              <span style="font-size:7px;color:#8A9E8E">Kharif 2024</span>
+            </div>
+            <div style="background:#0d1c11;padding:10px">
+              <div class="grid grid-cols-3 gap-2 mb-2">
+                <div class="dash-stat"><div class="dash-stat-label">Total Area</div><div class="dash-stat-value">128 ac</div></div>
+                <div class="dash-stat"><div class="dash-stat-label">Crop Health</div><div class="dash-stat-value" style="color:#95D5B2">94%</div></div>
+                <div class="dash-stat"><div class="dash-stat-label">Moisture</div><div class="dash-stat-value" style="color:#E8835A">21.4%</div></div>
+              </div>
+              <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="dash-stat"><div class="dash-stat-label">Farm Efficiency</div><div class="dash-stat-value">91%</div></div>
+                <div class="dash-stat"><div class="dash-stat-label">Active Alerts</div><div class="dash-stat-value" style="color:#E8835A">2</div></div>
+                <div class="dash-stat"><div class="dash-stat-label">Soil Health</div><div class="dash-stat-value">82/100</div></div>
+              </div>
+              <div style="background:rgba(212,98,42,0.12);border:1px solid rgba(212,98,42,0.3);border-radius:4px;padding:6px 8px;margin-bottom:8px">
+                <span style="font-size:7px;color:#E8835A;font-weight:700">⚠ TOP PRIORITY - Aphid infestation, Field 01, 78% match</span>
+              </div>
+              <div style="border-radius:4px;overflow:hidden;height:70px;position:relative;background:linear-gradient(135deg,#3a3018,#1e3d27 55%,#2D6A4F)">
+                <span style="position:absolute;top:6px;left:6px;font-size:6px;background:rgba(212,98,42,0.85);color:#fff;padding:2px 5px;border-radius:2px">Field 01 · 78%</span>
+                <span style="position:absolute;bottom:6px;left:6px;font-size:6px;background:rgba(45,106,79,0.85);color:#fff;padding:2px 5px;border-radius:2px">Field 04 · 88%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="section-label">Overview Screen</div>
+            <span class="tag-green">Command centre</span>
+          </div>
+          <h3 class="display-md text-cream mb-5" style="font-size:26px">Six stat cards, a live field-health map, and AI insights - one glance, full context</h3>
+          <p class="body-md mb-6">Where the D2C home screen leads with imagery, this leads with numbers. Total area, crop health score, moisture, farm efficiency, active alerts, and soil health sit above the fold as the first thing a farm manager sees each morning - matching how they already think about the farm.</p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <span style="color:#52B788;margin-top:3px">✓</span>
+              <div class="body-md"><strong class="text-cream">Colour-coded field map</strong> reuses the same green/amber/ember system as the D2C badges - so "Field 01, 78% risk" reads with the same visual grammar as "Best Seller." One design language, two entirely different jobs.</div>
+            </div>
+            <div class="flex items-start gap-3 p-4" style="background:rgba(212,98,42,0.06);border:1px solid rgba(212,98,42,0.2);border-radius:2px">
+              <span style="color:#D4622A;margin-top:3px">→</span>
+              <div class="body-md"><strong style="color:#D4B87A">Data integrity check:</strong> the temperature stat card was originally pulling from the wrong data field, silently showing a stale reading. Resolved by tracing the card back to its source metric rather than trusting the number on screen - a reminder that dashboards fail quietly, not loudly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Predictions screen -->
+    <div class="card p-8 md:p-10 reveal">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6 lg:order-2">
+          <div class="dash-frame">
+            <div class="dash-bar">
+              <span style="font-size:8px;color:#95D5B2;font-weight:700">🌱 Soullyland / Predictions</span>
+              <span style="font-size:7px;color:#8A9E8E">24 May</span>
+            </div>
+            <div style="background:#0d1c11;padding:10px">
+              <div class="grid grid-cols-2 gap-2 mb-3">
+                <div class="dash-stat"><div class="dash-stat-label">Drought Risk (7d)</div><div class="dash-stat-value" style="color:#D4B87A">Medium</div></div>
+                <div class="dash-stat"><div class="dash-stat-label">Pest Outbreak</div><div class="dash-stat-value" style="color:#E8835A">High</div></div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:8px;margin-bottom:8px">
+                <div class="dash-stat-label" style="margin-bottom:6px">AI Prediction Feed</div>
+                <div style="font-size:7px;color:#F0E8D5;margin-bottom:4px">● Aphid infestation · Field 01 <span style="color:#E8835A">HIGH</span></div>
+                <div style="font-size:7px;color:#F0E8D5">● Moisture deficit · Field 02 <span style="color:#D4B87A">MEDIUM</span></div>
+              </div>
+              <div style="height:36px;display:flex;align-items:flex-end;gap:3px;padding:0 2px">
+                <div style="flex:1;height:60%;background:rgba(212,98,42,0.4);border-radius:1px"></div>
+                <div style="flex:1;height:80%;background:rgba(212,98,42,0.4);border-radius:1px"></div>
+                <div style="flex:1;height:45%;background:rgba(201,169,110,0.4);border-radius:1px"></div>
+                <div style="flex:1;height:70%;background:rgba(212,98,42,0.4);border-radius:1px"></div>
+                <div style="flex:1;height:55%;background:rgba(201,169,110,0.4);border-radius:1px"></div>
+                <div style="flex:1;height:90%;background:rgba(212,98,42,0.4);border-radius:1px"></div>
+                <div style="flex:1;height:65%;background:rgba(201,169,110,0.4);border-radius:1px"></div>
+              </div>
+              <div class="dash-stat-label" style="margin-top:4px">7-Day Risk Forecast</div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-6 lg:order-1">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="section-label">Predictions Screen</div>
+            <span class="tag-green">Decision support</span>
+          </div>
+          <h3 class="display-md text-cream mb-5" style="font-size:26px">From "what's happening" to "what's coming" - the same data, a week ahead</h3>
+          <p class="body-md mb-6">Overview answers "how is the farm right now." Predictions answers "what should I do next." Splitting these into separate tabs - rather than one overloaded screen - keeps each screen honest about the question it's answering.</p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <span style="color:#52B788;margin-top:3px">✓</span>
+              <div class="body-md"><strong class="text-cream">Every AI prediction pairs a confidence score with a concrete action</strong> - "78% match, inspect within 24h," not just a bare risk label. A prediction without a next step is just anxiety with data behind it.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span style="color:#52B788;margin-top:3px">✓</span>
+              <div class="body-md">Risk-type colour coding (pest / drought / frost) is consistent with the field-health map on Overview - so a manager jumping between tabs never has to re-learn what a colour means.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     BI MANAGER DASHBOARD (IN PROGRESS)
+═══════════════════════════════════════════ -->
+<section id="bi-dashboard" class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+  <div class="rule-gold mb-20"></div>
+
+  <p class="section-label mb-6 reveal">08 - BI Manager Dashboard</p>
+  <h2 class="display-lg text-cream mb-4 reveal delay-1">
+    The fourth platform,<br><em class="highlight">currently in build.</em>
+  </h2>
+  <p class="body-lg max-w-2xl mb-16 reveal delay-2">Where Soullyland tells a field manager about crops, the BI dashboard will tell a business manager about the company: the same system, extended one more time, for an audience that thinks in revenue and retention rather than moisture and yield.</p>
+
+  <div class="flex items-center gap-3 mb-8 reveal">
+    <span class="tag-ember">In Progress</span>
+    <span class="body-sm">Layout direction drawn from the Soullyland Overview pattern - stat cards + live visual + trend charts</span>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 reveal delay-1">
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Active Customers</div>
+      <div class="body-sm">Stat card</div>
+    </div>
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Total Revenue</div>
+      <div class="body-sm">Stat card</div>
+    </div>
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Orders Fulfilled</div>
+      <div class="body-sm">Stat card</div>
+    </div>
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Inventory Health</div>
+      <div class="body-sm">Stat card</div>
+    </div>
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Customer Drop-offs</div>
+      <div class="body-sm">Funnel chart</div>
+    </div>
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Revenue by Category</div>
+      <div class="body-sm">Pie chart</div>
+    </div>
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Sales Performance</div>
+      <div class="body-sm">Line graph</div>
+    </div>
+    <div class="placeholder-block p-5 text-center">
+      <div class="body-sm mb-1" style="color:#95D5B2">Order Volume Trend</div>
+      <div class="body-sm">Bar graph</div>
+    </div>
+  </div>
+
+  <div class="callout-block reveal delay-2 mb-8">
+    <p class="section-label mb-3">Design Intent</p>
+    <p class="body-md">Reusing the Soullyland Overview grid - stat cards up top, a primary visual centrepiece, supporting trend charts below - means a manager moving between the farmer dashboard and the business dashboard doesn't have to relearn a layout, only a vocabulary. KPIs replace crop metrics; pie, line, and bar charts replace the field map. Same skeleton, same design tokens, different story.</p>
+  </div>
+
+  <div class="tradeoff-block reveal delay-2">
+    <div class="tradeoff-label">⚖ Tradeoff - kept deliberately separate from the Farmer Dashboard</div>
+    <p class="body-md">The BI dashboard is not merged into Soullyland, even though they'll share a design system. Not every farmer is equipped with the education or data literacy to read graphs and charts fluently - the same visual language that helps a business manager scan revenue trends in seconds would add friction, not clarity, for a field user. Two dashboards, one system, deliberately different depths of data visualisation for two different levels of data fluency.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     DESIGN SYSTEM
+═══════════════════════════════════════════ -->
+<section id="system" class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+  <div class="rule-gold mb-20"></div>
+
+  <p class="section-label mb-6 reveal">09 - Design System</p>
+  <h2 class="display-lg text-cream mb-4 reveal delay-1">
+    Visual language<br><em class="highlight">that earns trust</em>
+  </h2>
+  <p class="body-lg max-w-2xl mb-16 reveal delay-2">Colour and typography aren't decoration. They create the emotional context within which a user decides whether to trust a brand. Every green communicates health. Every warm orange signals urgency and harvest energy.</p>
+
+  <!-- Colours -->
+  <div class="mb-20 reveal">
+    <div class="section-label mb-8">Colour System</div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div>
+        <div class="swatch" style="background:#2D6A4F"></div>
+        <div class="body-sm text-cream">Primary Green</div>
+        <div class="body-sm">#25751C</div>
+        <div style="font-size:14px;color:#52B788;margin-top:3px">Nav · CTAs · Trust</div>
+      </div>
+      <div>
+        <div class="swatch" style="background:#52B788"></div>
+        <div class="body-sm text-cream">Light Green</div>
+        <div class="body-sm">#52B788</div>
+        <div style="font-size:14px;color:#52B788;margin-top:3px">Sub-labels · Hover</div>
+      </div>
+      <div>
+        <div class="swatch" style="background:#D8F3DC;border:1px solid rgba(255,255,255,0.1)"></div>
+        <div class="body-sm text-cream">Pale Green</div>
+        <div class="body-sm">#D8F3DC</div>
+        <div style="font-size:14px;color:#52B788;margin-top:3px">Card tints · Callouts</div>
+      </div>
+      <div>
+        <div class="swatch" style="background:#D4622A"></div>
+        <div class="body-sm text-cream">Ember Orange</div>
+        <div class="body-sm">#D4622A</div>
+        <div style="font-size:14px;color:#E8835A;margin-top:3px">CTA urgent · Badges</div>
+      </div>
+      <div>
+        <div class="swatch" style="background:#1B1B1B;border:1px solid rgba(255,255,255,0.08)"></div>
+        <div class="body-sm text-cream">Near Black</div>
+        <div class="body-sm">#1B1B1B</div>
+        <div style="font-size:14px;color:#8A9E8E;margin-top:3px">Body · Headings</div>
+      </div>
+      <div>
+        <div class="swatch" style="background:#F5F5EE;border:1px solid rgba(255,255,255,0.1)"></div>
+        <div class="body-sm text-cream">Warm Off-White</div>
+        <div class="body-sm">#F5F5EE</div>
+        <div style="font-size:14px;color:#8A9E8E;margin-top:3px">Backgrounds · Cards</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typography -->
+  <div class="mb-20 reveal">
+    <div class="section-label mb-8">Typography Roles</div>
+    <div class="space-y-4">
+      <div class="card p-5 flex items-center gap-8">
+        <div style="min-width:120px">
+          <div class="section-label">Display / Hero</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#F0E8D5;line-height:1">Health & Wealth</div>
+        <div class="body-sm ml-auto">Large, mixed-weight - creates brand personality and emotional pull</div>
+      </div>
+      <div class="card p-5 flex items-center gap-8">
+        <div style="min-width:120px">
+          <div class="section-label">Product Names</div>
+        </div>
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:600;color:#F0E8D5">Organic Protein Shake</div>
+        <div class="body-sm ml-auto">Semi-bold, mid-size - scannable at high list density</div>
+      </div>
+      <div class="card p-5 flex items-center gap-8">
+        <div style="min-width:120px">
+          <div class="section-label">Body / Descriptors</div>
+        </div>
+        <div style="font-family:'Outfit',sans-serif;font-size:14px;font-weight:300;color:#A8BCA9;max-width:280px">Pure, plant-based protein crafted from farm-fresh organic sources.</div>
+        <div class="body-sm ml-auto">Regular weight, generous line-height - readable at paragraph length</div>
+      </div>
+      <div class="card p-5 flex items-center gap-8">
+        <div style="min-width:120px">
+          <div class="section-label">Price</div>
+        </div>
+        <div style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:#52B788">₹599</div>
+        <div class="body-sm ml-auto">Bold, primary decision signal - must visually stand out from all other text</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Component patterns -->
+  <div class="reveal">
+    <div class="section-label mb-8">Core Component Patterns</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card p-6">
+        <div class="section-label mb-4">Product Card</div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;max-width:160px">
+          <div style="height:70px;background:linear-gradient(135deg,#1a3a22,#0d1a0f);display:flex;align-items:center;justify-content:center;position:relative">
+            <div style="width:40px;height:40px;background:rgba(82,183,136,0.2);border-radius:4px"></div>
+            <div style="position:absolute;top:4px;left:4px;background:rgba(82,183,136,0.8);font-size:6px;color:#fff;padding:2px 5px;border-radius:2px">Best Seller</div>
+            <div style="position:absolute;top:4px;right:4px;font-size:10px;color:rgba(255,255,255,0.4)">♡</div>
+          </div>
+          <div style="padding:8px">
+            <div style="font-size:9px;color:#F0E8D5;font-weight:600;margin-bottom:3px">Gummy Vitamins</div>
+            <div style="font-size:7px;color:#8A9E8E;margin-bottom:5px">Immunity boost · Natural</div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:10px;color:#52B788;font-weight:700">₹299</span>
+              <div style="background:#2D6A4F;font-size:6px;color:#fff;padding:2px 8px;border-radius:2px">+ Cart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card p-6">
+        <div class="section-label mb-4">Category Pills</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:44px;height:44px;background:rgba(82,183,136,0.12);border-radius:50%;border:1px solid rgba(82,183,136,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+              <span style="font-size:18px">🌿</span>
+            </div>
+            <span style="font-size:8px;color:#8A9E8E">Farm</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:44px;height:44px;background:rgba(82,183,136,0.12);border-radius:50%;border:1px solid rgba(82,183,136,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+              <span style="font-size:18px">🥛</span>
+            </div>
+            <span style="font-size:8px;color:#8A9E8E">Dairy</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="width:44px;height:44px;background:rgba(82,183,136,0.12);border-radius:50%;border:1px solid rgba(82,183,136,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:4px">
+              <span style="font-size:18px">🧴</span>
+            </div>
+            <span style="font-size:8px;color:#8A9E8E">Skin</span>
+          </div>
+        </div>
+      </div>
+      <div class="card p-6">
+        <div class="section-label mb-4">Badges</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:inline-flex;align-items:center;gap:4px">
+            <div style="background:#52B788;color:#fff;font-size:7px;padding:2px 8px;border-radius:2px;font-weight:600">Best Seller</div>
+            <span style="font-size:7px;color:#8A9E8E">→ Green · trust</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:4px">
+            <div style="background:#D4622A;color:#fff;font-size:7px;padding:2px 8px;border-radius:2px;font-weight:600">New Arrival</div>
+            <span style="font-size:7px;color:#8A9E8E">→ Orange · urgency</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:4px">
+            <div style="background:#7B5EA7;color:#fff;font-size:7px;padding:2px 8px;border-radius:2px;font-weight:600">Featured</div>
+            <span style="font-size:7px;color:#8A9E8E">→ Purple · editorial</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:4px">
+            <div style="border:1px solid rgba(82,183,136,0.3);color:#95D5B2;font-size:7px;padding:2px 8px;border-radius:2px">✓ FSSAI</div>
+            <span style="font-size:7px;color:#8A9E8E">→ Outlined · certified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     ITERATION ROADMAP
+═══════════════════════════════════════════ -->
+<section id="iteration" class="py-32 px-6 md:px-16 relative overflow-hidden">
+  <div class="ghost-num absolute -right-10 top-0 pointer-events-none" style="opacity:0.12">V2</div>
+  <div class="max-w-7xl mx-auto">
+    <div class="rule-gold mb-20"></div>
+
+    <p class="section-label mb-6 reveal">10 - Iteration Roadmap</p>
+    <h2 class="display-lg text-cream mb-4 reveal delay-1">
+      Good design ships.<br><em class="highlight">Great design iterates.</em>
+    </h2>
+    <p class="body-lg max-w-2xl mb-16 reveal delay-2">This isn't a list of what went wrong. It's a prioritised brief for what comes next. Every product designer worth hiring knows that v1 is the start of a conversation, not the end.</p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- P0 -->
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p0 font-mono text-sm font-bold px-3 py-1 rounded-sm">P0</div>
+          <div class="body-md text-cream font-medium">Critical - Fix Before Launch</div>
+        </div>
+        <div class="space-y-3">
+          <div class="p-5 card" style="border-color:rgba(212,98,42,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Move certifications above the fold</div>
+            <div class="body-sm">Add a compact trust strip directly below the hero CTA. Research shows 15–25% conversion lift for organic D2C brands.</div>
+          </div>
+          <div class="p-5 card" style="border-color:rgba(212,98,42,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Default checkout to Standard shipping</div>
+            <div class="body-sm">Pre-selecting Priority (+₹20) inflates perceived cost. Make the upgrade a clear opt-in, not the default state.</div>
+          </div>
+          <div class="p-5 card" style="border-color:rgba(212,98,42,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Clarify cart checkbox behaviour</div>
+            <div class="body-sm">Add "Uncheck to save for later" micro-copy, or revert to standard cart. No UX pattern should silently fail.</div>
+          </div>
+          <div class="p-5 card" style="border-color:rgba(212,98,42,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Show total inside payment CTA</div>
+            <div class="body-sm">"Proceed to Payment - ₹633" confirms the amount before the tap. Eliminates a common hesitation moment.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P1 -->
+      <div class="reveal delay-1">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p1 font-mono text-sm font-bold px-3 py-1 rounded-sm">P1</div>
+          <div class="body-md text-cream font-medium">High Impact - Next Sprint</div>
+        </div>
+        <div class="space-y-3">
+          <div class="p-5 card" style="border-color:rgba(201,169,110,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Unify CTA colour system</div>
+            <div class="body-sm">Replace orange '+cart' buttons with brand green on mobile. One primary CTA colour. No exceptions.</div>
+          </div>
+          <div class="p-5 card" style="border-color:rgba(201,169,110,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Make flavour thumbnails interactive</div>
+            <div class="body-sm">Tapping a colour swatch on PDP should swap the hero image. Currently they appear decorative - a missed affordance.</div>
+          </div>
+          <div class="p-5 card" style="border-color:rgba(201,169,110,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Subscribe & Save in rupees</div>
+            <div class="body-sm">"Save ₹60/month" outperforms "Save 10%" in D2C subscription conversion. Concrete numbers beat percentages.</div>
+          </div>
+          <div class="p-5 card" style="border-color:rgba(201,169,110,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Show all categories on desktop</div>
+            <div class="body-sm">Carousel arrows on a desktop viewport suggest hidden content and reduce engagement. Full row on wide screens.</div>
+          </div>
+          <div class="p-5 card" style="border-color:rgba(201,169,110,0.2)">
+            <div class="body-sm text-cream font-medium mb-2">Direct cart add on web listings</div>
+            <div class="body-sm">'View Details' CTA removes a conversion step for decisive buyers. Add '+Cart' directly on product listing cards.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="reveal delay-2">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p2 font-mono text-sm font-bold px-3 py-1 rounded-sm">P2</div>
+          <div class="body-md text-cream font-medium">Improvement - Backlog</div>
+        </div>
+        <div class="space-y-3">
+          <div class="p-5 card">
+            <div class="body-sm text-cream font-medium mb-2">Blog category tags + email capture</div>
+            <div class="body-sm">Add Nutrition/Recipes/Lifestyle tags for self-segmentation. Email capture adjacent to blog converts traffic to owned audience.</div>
+          </div>
+          <div class="p-5 card">
+            <div class="body-sm text-cream font-medium mb-2">Vary testimonial star ratings</div>
+            <div class="body-sm">Identical 4.5-star ratings across all reviews reduces believability. Varied, authentic social proof converts better.</div>
+          </div>
+          <div class="p-5 card">
+            <div class="body-sm text-cream font-medium mb-2">Login CTA refinement</div>
+            <div class="body-sm">The house icon on 'Continue' is metaphorically ambiguous. Replace with arrow or explicit 'Get OTP' label.</div>
+          </div>
+          <div class="p-5 card">
+            <div class="body-sm text-cream font-medium mb-2">Fix Explore tile grid</div>
+            <div class="body-sm">Originals tile should be a full-width banner above a consistent grid - not an irregular double-width cell.</div>
+          </div>
+          <div class="p-5 card">
+            <div class="body-sm text-cream font-medium mb-2">Performance optimisation</div>
+            <div class="body-sm">Isometric farm illustration → SVG or Lottie. Maintains visual quality while dramatically improving page load speed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     METRICS
+═══════════════════════════════════════════ -->
+<section class="py-24 px-6 md:px-16 max-w-7xl mx-auto">
+  <div class="rule-gold mb-20"></div>
+
+  <p class="section-label mb-6 reveal">11 - Success Metrics</p>
+  <h2 class="display-lg text-cream mb-16 reveal delay-1">
+    Design decisions<br><em class="highlight">without outcomes</em><br>are decoration.
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal delay-2">
+    <div class="card p-6">
+      <div class="flex items-start justify-between mb-4">
+        <div class="body-md text-cream font-medium">Add-to-Cart Rate</div>
+        <div style="background:rgba(82,183,136,0.1);color:#95D5B2;font-family:'Space Mono',monospace;font-size:14px;padding:3px 8px;border:1px solid rgba(82,183,136,0.2);border-radius:1px">Benchmark: 3–5%</div>
+      </div>
+      <div class="body-sm">% of PDP views resulting in cart add. Directly measures product page clarity and CTA effectiveness.</div>
+    </div>
+    <div class="card p-6">
+      <div class="flex items-start justify-between mb-4">
+        <div class="body-md text-cream font-medium">Cart → Checkout Rate</div>
+        <div style="background:rgba(82,183,136,0.1);color:#95D5B2;font-family:'Space Mono',monospace;font-size:14px;padding:3px 8px;border:1px solid rgba(82,183,136,0.2);border-radius:1px">Target: >60%</div>
+      </div>
+      <div class="body-sm">Lower rates indicate cart UX friction - checkboxes, unclear totals, or confusing selection patterns.</div>
+    </div>
+    <div class="card p-6">
+      <div class="flex items-start justify-between mb-4">
+        <div class="body-md text-cream font-medium">Checkout Completion</div>
+        <div style="background:rgba(82,183,136,0.1);color:#95D5B2;font-family:'Space Mono',monospace;font-size:14px;padding:3px 8px;border:1px solid rgba(82,183,136,0.2);border-radius:1px">Target: >75%</div>
+      </div>
+      <div class="body-sm">% of initiated checkouts that complete payment. Validates shipping UX and cost transparency design.</div>
+    </div>
+    <div class="card p-6">
+      <div class="flex items-start justify-between mb-4">
+        <div class="body-md text-cream font-medium">Subscription Opt-in Rate</div>
+        <div style="background:rgba(201,169,110,0.1);color:#D4B87A;font-family:'Space Mono',monospace;font-size:14px;padding:3px 8px;border:1px solid rgba(201,169,110,0.2);border-radius:1px">Industry: 8–15%</div>
+      </div>
+      <div class="body-sm">% of PDP sessions activating Subscribe & Save. Measures LTV impact of subscription toggle placement and copy.</div>
+    </div>
+    <div class="card p-6">
+      <div class="flex items-start justify-between mb-4">
+        <div class="body-md text-cream font-medium">Cert Strip Scroll Depth</div>
+        <div style="background:rgba(212,98,42,0.1);color:#E8835A;font-family:'Space Mono',monospace;font-size:14px;padding:3px 8px;border:1px solid rgba(212,98,42,0.2);border-radius:1px">A/B Test Signal</div>
+      </div>
+      <div class="body-sm">% of web visitors who scroll to certifications. Informs optimal placement for trust signal - pre/post hero.</div>
+    </div>
+    <div class="card p-6">
+      <div class="flex items-start justify-between mb-4">
+        <div class="body-md text-cream font-medium">Reorder Frequency</div>
+        <div style="background:rgba(82,183,136,0.1);color:#95D5B2;font-family:'Space Mono',monospace;font-size:14px;padding:3px 8px;border:1px solid rgba(82,183,136,0.2);border-radius:1px">30-Day Interval</div>
+      </div>
+      <div class="body-sm">Average days between repeat orders on mobile. Measures the effectiveness of the Reorder tab in driving retention behaviour.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     REFLECTION
+═══════════════════════════════════════════ -->
+<section id="reflection" class="py-32 px-6 md:px-16 relative overflow-hidden">
+  <div class="ghost-num absolute -left-10 top-0 pointer-events-none" style="opacity:0.12">✦</div>
+  <div class="max-w-7xl mx-auto">
+    <div class="rule-gold mb-20"></div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <div class="lg:col-span-7">
+        <p class="section-label mb-6 reveal">12 - Designer Reflection</p>
+        <h2 class="display-lg text-cream mb-10 reveal delay-1">
+          Design must be<br><em class="highlight">convertible,</em><br>not just visible.
+        </h2>
+
+        <div class="space-y-8">
+          <div class="reveal delay-2">
+            <p class="body-lg">
+              Designing Soullylush reinforced a core belief: a beautiful e-commerce interface that doesn't guide the user to 'Add to Cart' is a failed design - regardless of how polished it looks.
+            </p>
+          </div>
+
+          <div class="reveal delay-3">
+            <p class="body-lg">
+              This project deepened my appreciation for category-specific design constraints. Organic grocery is not fashion e-commerce or SaaS. The purchase psychology is slower, the trust barriers are higher, and the emotional payoff is long-term health, not instant gratification. Every section had to work harder to answer one implicit question: <em class="highlight-gold">"Can I trust this brand with my family's health?"</em>
+            </p>
+          </div>
+
+          <div class="reveal delay-4">
+            <p class="body-lg">
+              The dual-platform challenge was equally instructive. The web homepage needed to tell a complete brand story. The mobile app assumed higher intent - the user wants to complete a task, not read a mission statement. Designing for these two mindsets simultaneously, while maintaining visual and behavioural coherence, required continuous calibration between storytelling and efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 reveal-right delay-2">
+        <!-- Philosophy card -->
+        <div class="p-8" style="border:1px solid rgba(201,169,110,0.25);border-radius:2px;background:rgba(201,169,110,0.04)">
+          <div class="section-label mb-6" style="color:#C9A96E">Design Philosophy</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#F0E8D5;line-height:1.35;font-style:italic;margin-bottom:24px">
+            "Colour, typography, and visual style are not decoration - they create the emotional context within which a user decides whether to trust a brand."
+          </div>
+          <div class="rule-gold"></div>
+          <div class="mt-6 space-y-4">
+            <div class="flex items-start gap-3">
+              <div style="width:2px;height:40px;background:#C9A96E;flex-shrink:0;margin-top:3px"></div>
+              <div class="body-sm">Every green on Soullylush communicates health, nature, and permission. Every orange communicates harvest energy and urgency.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div style="width:2px;height:40px;background:#52B788;flex-shrink:0;margin-top:3px"></div>
+              <div class="body-sm">The Soullylush design isn't a skin over a product catalogue. It is the brand's first - and sometimes only - conversation with every customer.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What I would do differently -->
+        <div class="mt-6 card p-6">
+          <div class="section-label mb-4">What I would do differently</div>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <span style="color:#52B788;font-size:14px;margin-top:2px">01</span>
+              <div class="body-sm">Run a quick comprehension test on the checkbox cart with users unfamiliar with the physical-list metaphor - validating the mental model early, rather than leaning on micro-copy to close the gap after the fact.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span style="color:#52B788;font-size:14px;margin-top:2px">02</span>
+              <div class="body-sm">Instrument scroll-depth analytics before launch, not after - so the certification placement tradeoff could be validated with real data from day one instead of waiting for a next revision.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span style="color:#52B788;font-size:14px;margin-top:2px">03</span>
+              <div class="body-sm">Define CTA colour rules in the design system before screen design - not discovered as an inconsistency after.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CLOSING / CTA
+═══════════════════════════════════════════ -->
+<section class="py-32 px-6 md:px-16 text-center relative overflow-hidden">
+  <div class="ghost-num absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style="opacity:0.06;font-size:clamp(120px,25vw,280px)">JP</div>
+
+  <div class="max-w-3xl mx-auto relative z-10">
+    <div class="rule-gold mb-16"></div>
+    <p class="section-label mb-6 reveal">Jayaprakash · UI/UX Designer · Visual Designer</p>
+    <h2 class="display-xl text-cream mb-8 reveal delay-1">
+      Let's build the<br>next <em class="highlight">great product</em><br>together.
+    </h2>
+    <p class="body-lg mb-12 reveal delay-2">
+      3 years of product design across D2C, SaaS, branding, and editorial. Based in Chennai. Available with 90-day notice.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-16 reveal delay-3">
+      <a href="https://behance.net/pako_prakash" target="_blank" class="cta-btn-filled">
+        View Full Portfolio ↗
+      </a>
+      <a href="mailto:prakashstr.vdm@gmail.com" class="cta-btn">
+        Get in Touch →
+      </a>
+    </div>
+
+    <!-- Footer tags -->
+    <div class="flex flex-wrap justify-center gap-3 reveal delay-4">
+      <span class="tag-green">D2C Product Design</span>
+      <span class="tag-green">SaaS UI/UX</span>
+      <span class="tag-green">Design Systems</span>
+      <span class="tag-gold">Brand Identity</span>
+      <span class="tag-gold">Chennai · Remote</span>
+    </div>
+
+    <div class="rule-gold mt-16 mb-8"></div>
+    <p class="body-sm">© 2025 Jayaprakash · Eterna Creatives · Case study</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script src="script.js" defer></script>
+</body>
+</html>
