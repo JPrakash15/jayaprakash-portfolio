@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery — Jayaprakash | Product &amp; UX Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:ital,wght@0,400;1,400;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./gallery.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#d9a441" stroke-width="1.4">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="2.6" fill="#d9a441" stroke="none" />
+          <line x1="12" y1="1" x2="12" y2="4.5" />
+          <line x1="12" y1="19.5" x2="12" y2="23" />
+          <line x1="1" y1="12" x2="4.5" y2="12" />
+          <line x1="19.5" y1="12" x2="23" y2="12" />
+        </svg>
+        JAYAPRAKASH
+      </div>
+      <nav id="siteNav">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../soullylush/soullylush-case-study.html">SoullyLush</a></li>
+          <li><a href="../helpflow/HelpFlowAI-case-study.html" target="_blank">HelpFlowAi</a></li>
+          <li><a href="../ttdc/tn-tourism-case-study.html">TN Tourism</a></li>
+          <li><a href="../gallery/gallery.html">Gallery</a></li>
+          <li><a href="../index.html#faq">FAQ's</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn-resume" target="_blank" href="../assets/Jayaprakash UX designer.pdf" download>
+          Resume ↓
+        </a>
+        <a class="btn-hire" href="./index.html#contact"> Hire Me → </a>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===================== INTERACTIVE HALFTONE HERO ===================== -->
+    <section class="halftone-hero" id="halftoneHero">
+      <div class="halftone-bg" aria-hidden="true"></div>
+      <div class="halftone-copy">
+        <p class="hero-eyebrow mono">Gallery</p>
+        <h1 class="display">Move your cursor.<br />Watch the work fall.</h1>
+        <p class="halftone-sub">
+          Every project I've shipped, scattered across one page. Move your
+          mouse through this space to shake a few loose —
+          <span class="mobile-only">or drag your finger across the screen.</span>
+        </p>
+      </div>
+      <div class="fall-layer" id="fallLayer" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===================== FILTERABLE GALLERY ===================== -->
+    <section class="gallery-section" id="galleryGrid">
+      <div class="value-head reveal">
+        <p class="sheet-label mono">Everything I've Made</p>
+        <h2 class="display">Browse by category.</h2>
+      </div>
+
+      <div class="chip-row-wrap reveal">
+        <div class="chip-row" id="chipRow">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="ux">UX Design</button>
+          <button class="chip" data-filter="ui">UI Design</button>
+          <button class="chip" data-filter="website">Website</button>
+          <button class="chip" data-filter="app">App Design</button>
+          <button class="chip" data-filter="dashboard">Dashboards</button>
+          <button class="chip" data-filter="icon">Icons</button>
+          <button class="chip" data-filter="logo">Logo</button>
+          <button class="chip" data-filter="branding">Branding</button>
+          <button class="chip" data-filter="social">Social Media</button>
+          <button class="chip" data-filter="brochure">Brochure</button>
+        </div>
+      </div>
+
+      <div class="masonry-grid reveal" id="masonryGrid">
+        <!-- populated by gallery.js -->
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="reveal">
+        <p class="sheet-label mono">Get in touch</p>
+        <h2 class="display">Let's build the<br />next case study.</h2>
+      </div>
+      <div class="footer-links reveal">
+        <a href="mailto:prakashstr.vdm@gmail.com">prakashstr.vdm@gmail.com</a>
+        <a href="https://linkedin.com/in/devesign-jay" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://behance.net/pako_prakash" target="_blank" rel="noopener">Behance</a>
+        <a href="https://wa.me/+917397571246" target="_blank" rel="noopener">Whatsapp</a>
+      </div>
+      <p class="copyright mono">© 2026 Jayaprakash - UI UX Designer &amp; Mentor, Chennai</p>
+    </footer>
+
+    <script>
+      const reveals = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      reveals.forEach((el) => io.observe(el));
+
+      // Mobile nav toggle
+      const navToggle = document.getElementById("navToggle");
+      const siteNav = document.getElementById("siteNav");
+      if (navToggle && siteNav) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = siteNav.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+        siteNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            siteNav.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    </script>
+    <script src="./gallery.js"></script>
+  </body>
+</html>
