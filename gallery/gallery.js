@@ -21,27 +21,27 @@ const GALLERY_ITEMS = [
   },
   // APP
   {
-    src: "../gallery/assets/shoobey/Splash Screen.jpg",
+    src: "./assets/shoobey/Splash Screen.jpg",
     title: "Shoobey - Mobile App - Splashscreen",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/shoobey/Home.jpg",
+    src: "./assets/shoobey/Home.jpg",
     title: "Shoobey - Mobile App - Home",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/shoobey/Category.jpg",
+    src: "./assets/shoobey/Category.jpg",
     title: "Shoobey - Mobile App - Category",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/shoobey/Product Page.jpg",
+    src: "./assets/shoobey/Product Page.jpg",
     title: "Shoobey - Mobile App - Product",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/shoobey/Wishlist.jpg",
+    src: "./assets/shoobey/Wishlist.jpg",
     title: "Shoobey - Mobile App - Wishlist",
     categories: ["app", "ux","ui"],
   },
@@ -51,67 +51,67 @@ const GALLERY_ITEMS = [
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Onboarding 1.jpg",
+    src: "./assets/seasonal/Onboarding 1.jpg",
     title: "Seasonal - Mobile App - Onboarding",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Onboarding 2.jpg",
+    src: "./assets/seasonal/Onboarding 2.jpg",
     title: "Seasonal - Mobile App - Onboarding",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Home.jpg",
+    src: "./assets/seasonal/Home.jpg",
     title: "Seasonal - Mobile App - Home",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Explore.jpg",
+    src: "./assets/seasonal/Explore.jpg",
     title: "Seasonal - Mobile App - Explore",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Wishlist.jpg",
+    src: "./assets/seasonal/Wishlist.jpg",
     title: "Seasonal - Mobile App - Wishlist",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Bookings.jpg",
+    src: "./assets/seasonal/Bookings.jpg",
     title: "Seasonal - Mobile App - Bookings",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Profile.jpg",
+    src: "./assets/seasonal/Profile.jpg",
     title: "Seasonal - Mobile App - Profile",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Search.jpg",
+    src: "./assets/seasonal/Search.jpg",
     title: "Seasonal - Mobile App - Search",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Details.jpg",
+    src: "./assets/seasonal/Details.jpg",
     title: "Seasonal - Mobile App - Deatils",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Notifivation.jpg",
+    src: "./assets/seasonal/Notification.jpg",
     title: "Seasonal - Mobile App - Notification",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Reviews.jpg",
+    src: "./assets/seasonal/Reviews.jpg",
     title: "Seasonal - Mobile App - Reviews",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Settings.jpg",
+    src: "./assets/seasonal/Settings.jpg",
     title: "Seasonal - Mobile App - Settings",
     categories: ["app", "ux","ui"],
   },
   {
-    src: "../gallery/assets/seasonal/Route.jpg",
+    src: "./assets/seasonal/Route.jpg",
     title: "Seasonal - Mobile App - Route",
     categories: ["app", "ux","ui"],
   },
@@ -162,12 +162,12 @@ const GALLERY_ITEMS = [
   },
   // LOGO
   {
-    src: "../gallery/assets/logo/HelpflowaiPri.jpg",
+    src: "./assets/logo/HelpflowaiPri.jpg",
     title: "Helpflow ai - Humanoid Robot Help Flow Logo",
     categories: ["logo", "graphic"],
   },
   {
-    src: "../gallery/assets/logo/HelpflowaiSec.jpg",
+    src: "./assets/logo/HelpflowaiSec.jpg",
     title: "Helpflow ai - Humanoid Robot Help Flow Logo",
     categories: ["logo", "graphic"],
   },

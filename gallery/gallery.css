@@ -2,7 +2,7 @@
 .halftone-hero {
   position: relative;
   height: 82vh;
-  min-height: 480px;
+  min-height: 680px;
   max-width: var(--container);
   margin: 0 auto;
   padding-top: 90px;
@@ -165,6 +165,8 @@
   margin: 0 auto;
   columns: 4 260px;
   column-gap: 20px;
+  opacity: 1 !important;
+  transform: none !important;
 }
 @media (max-width: 1100px) {
   .masonry-grid {
