@@ -238,8 +238,13 @@ function buildGrid() {
   let html = "";
   GALLERY_ITEMS.forEach((item) => {
     html += `
-      <div class="g-card" data-cats="${item.categories.join(" ")}">
-        <img src="${item.src}" alt="${item.title}" loading="lazy" />
+      <div
+          class="g-card"
+          data-cats="${item.categories.join(" ")}"
+          data-image="${item.src}"
+          data-title="${item.title}"
+          >
+          <img src="${item.src}" alt="${item.title}" loading="lazy" />
         <div class="g-body">
           <span class="g-cat">${item.categories[0]}</span>
           <p class="g-title">${item.title}</p>
@@ -258,6 +263,56 @@ function buildGrid() {
   grid.innerHTML = html;
 }
 buildGrid();
+
+/* ===================== IMAGE LIGHTBOX ===================== */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxTitle = document.getElementById("lightboxTitle");
+const lightboxClose = document.getElementById("lightboxClose");
+
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".g-card:not(.placeholder)");
+
+  if (!card) return;
+
+  const imageSrc = card.dataset.image;
+  const imageTitle = card.dataset.title;
+
+  if (!imageSrc) return;
+
+  lightboxImage.src = imageSrc;
+  lightboxImage.alt = imageTitle;
+  lightboxTitle.textContent = imageTitle;
+
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+
+  document.body.style.overflow = "hidden";
+});
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+
+  document.body.style.overflow = "";
+}
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+/* Close when clicking outside the image */
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+/* Close with Escape key */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lightbox.classList.contains("open")) {
+    closeLightbox();
+  }
+});
 
 /* ===================== CHIP FILTERING ===================== */
 const chipRow = document.getElementById("chipRow");
