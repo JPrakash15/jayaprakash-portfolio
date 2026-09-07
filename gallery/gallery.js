@@ -173,51 +173,51 @@ const GALLERY_ITEMS = [
   },
 
   // GRAPHIC
-  // {
-  //   src: "./assets/social/80th 1.png",
-  //   title: "Independence - Exploration",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/80th 2.png",
-  //   title: "Independence - Exploration",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/80th 3.png",
-  //   title: "Independence - Exploration",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/80th 4.png",
-  //   title: "Independence - Exploration",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/burger.jpg",
-  //   title: "Burgar - MANIAC",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/fashion.jpg",
-  //   title: "Fashion friday - Watch Collection",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/Idly.jpg",
-  //   title: "Hot idly plate as Space ship",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/tea.jpg",
-  //   title: "Nature herbal Tea",
-  //   categories: ["graphic", "social media"],
-  // },
-  // {
-  //   src: "./assets/social/music.jpg",
-  //   title: "World Music Day",
-  //   categories: ["graphic", "social media"],
-  // },
+  {
+    src: "./assets/social/80th 1.png",
+    title: "Independence - Exploration",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/80th 2.png",
+    title: "Independence - Exploration",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/80th 3.png",
+    title: "Independence - Exploration",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/80th 4.png",
+    title: "Independence - Exploration",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/burger.jpg",
+    title: "Burgar - MANIAC",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/fashion.jpg",
+    title: "Fashion friday - Watch Collection",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/Idly.jpg",
+    title: "Hot idly plate as Space ship",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/tea.jpg",
+    title: "Nature herbal Tea",
+    categories: ["graphic", "social media"],
+  },
+  {
+    src: "./assets/social/music.jpg",
+    title: "World Music Day",
+    categories: ["graphic", "social media"],
+  },
 ];
 
 /* Categories with no real assets yet — shown as friendly placeholders
